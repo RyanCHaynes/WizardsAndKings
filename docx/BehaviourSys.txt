@@ -1,0 +1,7 @@
+Systems and Data movement
+Layering data, systems manipulate things;
+Setting component behaviours rather than imidiate transposition of data on final layer;
+(vision component might set seeable to true or compile a list of seeable enemies)
+(behavior component will check sensory components and will set tangables on a layer that is not directly affecting the "physical" expression of data
+but rather the neurological expression of data;
+Physical systems will change entities physical expression by exressing the physical expression of the nuerological data;
