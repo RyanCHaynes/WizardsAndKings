@@ -59,6 +59,6 @@ Incanus Games©
 
 ## Acknowledgments
 
-Special thanks to-
+Special thanks to: <br />
 Thesis suporvisor & Software Engineering Mentor, <br />
 Dr. Theodore Lehr : Texas State CS department <br />
