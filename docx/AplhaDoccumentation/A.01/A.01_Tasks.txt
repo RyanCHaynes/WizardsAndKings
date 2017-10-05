@@ -1,0 +1,14 @@
+Features wanted ANIMpocket: 
+-Animated Background 
+	-S1 (Foreground) 
+	-S2 (Background) 
+Ryan: 
+-Rudimentary behavior system (see docs) 
+	-Animation System 
+-Code Macros for Entity System data retrieval 
+-Automated Entity Assemblers 
+
+Maybe Features: Ryan: 
+-Entity Disassemblers 
+ANIMpocket: 
+-Basic unit sprites
