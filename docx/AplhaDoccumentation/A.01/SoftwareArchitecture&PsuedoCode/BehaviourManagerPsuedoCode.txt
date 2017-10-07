@@ -1,0 +1,18 @@
+Behavior Manager
+		-Behavior trees
+		-Edit "thinking components of AI"
+			-I.E. Sight (checks values in this component to determine behaviour(A component that stores variables that pretain to units withen range of object & have a Visual component) (where a "Valid Range" is a point along
+
+			Maybe something like
+			Check if Alive, Check if Incapacitated, Check if SeesAnything
+			-Sees Something 
+				-Check if sees enemy 
+			-Sees Enemy
+				-Check if enemy is dead
+			-Enemy is alive
+				-Check if attack is on cooldown
+				-Edit "thinking" component "Attack" (enemy Position) 
+	Physical managers
+		-Edit real values that pertain to the In game Entites, I.E. Energy(int EnergyStore), IsVisualizable(Bool isInvisivle, String Animation, int AnimationFrame), Health(Bool isAlive, int Health) 
+									Attack(int damage, int durration)
+		
