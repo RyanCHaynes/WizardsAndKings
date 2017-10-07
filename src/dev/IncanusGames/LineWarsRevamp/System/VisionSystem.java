@@ -22,18 +22,23 @@ public class VisionSystem implements SubSystem{
 		for (Integer entity : l) {
 			for(Integer entity2 : l) {
 				if(game.entityManager.getComponent(entity, Vision.class).isFacingForward()) {
-					if((game.entityManager.getComponent(entity, Position.class).getX() + game.entityManager.getComponent(entity, Vision.class).getRange() 
-							>= game.entityManager.getComponent(entity2, Position.class).getX()
-							&& entity != entity2 
-							&& game.entityManager.getComponent(entity2, Vision.class).isVisible())){
-						game.entityManager.getComponent(entity, Vision.class).setTarget(true);
-						inRange.add(entity2);
+					if((game.entityManager.getComponent(entity, Position.class).getX() //x position
+							+ game.entityManager.getComponent(entity, Vision.class).getRange() //+ range
+							>= game.entityManager.getComponent(entity2, Position.class).getX() //greater than  e2 x pos
+							&& entity != entity2  //& they are not the same entity
+							&& game.entityManager.getComponent(entity2, Vision.class).isVisible()//& e2 is visible
+							&& game.entityManager.getComponent(entity, Position.class).getX() <= //& e2 is not behind e1
+							game.entityManager.getComponent(entity2, Position.class).getX()
+							)) 
+					{
+						game.entityManager.getComponent(entity, Vision.class).setTarget(true); //e1 has target
+						inRange.add(entity2);													//e2 is a target of e1
 					}
-					game.entityManager.getComponent(entity, Vision.class).setInRange(inRange);
+					game.entityManager.getComponent(entity, Vision.class).setInRange(inRange); //pass list of in range ints to e1
 				}
 				else {
 					
-					game.entityManager.getComponent(entity, Vision.class).setTarget(false);
+					game.entityManager.getComponent(entity, Vision.class).setTarget(false); //else e1 has no targets
 				}
 			}
 		}
