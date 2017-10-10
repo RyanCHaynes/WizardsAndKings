@@ -3,77 +3,69 @@ package dev.IncanusGames.LineWarsRevamp.State;
 import java.awt.Graphics;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
-import dev.IncanusGames.LineWarsRevamp.Component.Behavior;
-import dev.IncanusGames.LineWarsRevamp.Component.Health;
-import dev.IncanusGames.LineWarsRevamp.Component.Movement;
+import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.GfxAssembler;
+import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.UnitAssembler;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
-import dev.IncanusGames.LineWarsRevamp.Component.Vector2d;
-import dev.IncanusGames.LineWarsRevamp.Component.Vision;
+import dev.IncanusGames.LineWarsRevamp.System.AttackSystem;
 import dev.IncanusGames.LineWarsRevamp.System.BehaviorSystem;
+import dev.IncanusGames.LineWarsRevamp.System.DeathSystem;
+import dev.IncanusGames.LineWarsRevamp.System.HealthSystem;
 import dev.IncanusGames.LineWarsRevamp.System.MovementSystem;
 import dev.IncanusGames.LineWarsRevamp.System.RenderSystem;
+import dev.IncanusGames.LineWarsRevamp.System.TimedLifeSystem;
 import dev.IncanusGames.LineWarsRevamp.System.VisionSystem;
 
 public class GameState extends State{
-	private int background, spawner, skeleton, skeletonb;
+	private int background;
+	private static Position SpawnA = new Position(0, 370);
+	private static Position SpawnB = new Position(1315, 370);
+	private UnitAssembler UA;
+	private GfxAssembler GfxA;
 	private RenderSystem R;
 	private MovementSystem M;
 	private BehaviorSystem B;
 	private VisionSystem V;
+	private AttackSystem Asys;
+	private TimedLifeSystem TLsys;
+	private DeathSystem Dsys;
+	private HealthSystem Hsys;
+	
+	
 	public GameState(Game game) {
 		super(game);
+		UA = new UnitAssembler(game);
+		GfxA = new GfxAssembler(game);
+		Asys = new AttackSystem(game);
 		background = game.entityManager.generateNewEntityID();
-		spawner = game.entityManager.generateNewEntityID();
-		skeleton = game.entityManager.generateNewEntityID();
-		skeletonb = game.entityManager.generateNewEntityID();
+		
+		
 		game.entityManager.addComponent(background, new Position(0,0));
-		game.entityManager.addComponent(background, new Renderable());
-		game.entityManager.addComponent(spawner, new Position(20,20));
-		
-		game.entityManager.addComponent(skeleton, new Position(1191,663));
-		game.entityManager.addComponent(skeleton, new Health());
-		game.entityManager.addComponent(skeleton, new Vision());
-		game.entityManager.addComponent(skeleton, new Renderable());
-		game.entityManager.addComponent(skeleton, new Movement());
-		game.entityManager.addComponent(skeleton, new Vector2d(-2,0));
-		game.entityManager.addComponent(skeleton, new Behavior("skeleton"));
-		
-		game.entityManager.addComponent(skeletonb, new Position(0,663));
-		game.entityManager.addComponent(skeletonb, new Health());
-		game.entityManager.addComponent(skeletonb, new Vision());
-		game.entityManager.addComponent(skeletonb, new Renderable());
-		game.entityManager.addComponent(skeletonb, new Movement());
-		game.entityManager.addComponent(skeletonb, new Vector2d(2,0));
-		game.entityManager.addComponent(skeletonb, new Behavior("skeleton"));
+		game.entityManager.addComponent(background, new Renderable("AlphaBG1", 0, 0, 1));
 
-		game.entityManager.getComponent(background, Renderable.class).setAnimationName("AlphaBG1");
-		game.entityManager.getComponent(background, Renderable.class).setFrame(0);
-		//skeleton renderable
-		game.entityManager.getComponent(skeleton, Renderable.class).setAnimationName("SkeletalSwordsman");
-		game.entityManager.getComponent(skeleton, Health.class).setHP(10);
-		game.entityManager.getComponent(skeleton, Renderable.class).setFrame(0);
-		game.entityManager.getComponent(skeleton, Vision.class).setRange(10);
-		game.entityManager.getComponent(skeleton, Vision.class).setVisible(true);
-		
-		
-		game.entityManager.getComponent(skeletonb, Renderable.class).setAnimationName("SkeletalSwordsman");
-		game.entityManager.getComponent(skeletonb, Health.class).setHP(10);
-		game.entityManager.getComponent(skeletonb, Renderable.class).setFrame(0);
-		game.entityManager.getComponent(skeletonb, Vision.class).setRange(10);
-		game.entityManager.getComponent(skeletonb, Vision.class).setFacingForward(true);
+		UA.createSkeletonSM(SpawnA.getX(), SpawnA.getY(), true);
+		UA.createSkeletonSM(SpawnB.getX(), SpawnB.getY(), false);
 		
 		R = new RenderSystem(game);
 		M = new MovementSystem(game);
 		B = new BehaviorSystem(game);
 		V= new VisionSystem(game);
+		TLsys= new TimedLifeSystem(game);
+		Dsys = new DeathSystem(game);
+		Hsys = new HealthSystem(game);
+		Asys = new AttackSystem(game);
 	}
 
 	@Override
 	public void tick() {
 		V.Update();
-		B.Update();
 		M.Update();
+		Asys.Update();
+		TLsys.Update();
+		Dsys.Update();
+		Hsys.Update();
+		Asys.Update();
+		B.Update();
 	}
 
 	@Override

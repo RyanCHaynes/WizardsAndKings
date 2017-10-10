@@ -11,8 +11,9 @@ public class SpriteSheetManager {
 	private static ArrayList<SpriteSheet> SpriteSheets = new ArrayList<SpriteSheet>();
 	public static HashMap<String, ArrayList<BufferedImage>> AnimationMap = new HashMap<String, ArrayList<BufferedImage>>(); //stores all animation via hashMap, animate objects will refer to this in their render methods by looking up a string and frame
 	public static void init(){
-		SpriteSheets.add(new SpriteSheet(600,400,"AlphaBG1",1,2));
-		SpriteSheets.add(new SpriteSheet(32,32,"SkeletalSwordsman",1,2));
+		SpriteSheets.add(new SpriteSheet(263,142,"AlphaBG1",1,5));
+		SpriteSheets.add(new SpriteSheet(32,32,"SkeletalSwordsman",1,3));
+		SpriteSheets.add(new SpriteSheet(32,32,"SlashAnim",4,3));
 		loadSpriteSheets();
 		loadAnimationMap();
 	}

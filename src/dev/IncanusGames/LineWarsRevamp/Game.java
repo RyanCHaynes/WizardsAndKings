@@ -111,4 +111,7 @@ public class Game implements Runnable{
 		public Graphics getGraphics(){
 			return this.g;
 		}
+		public EntityManager getEntityManager() {
+			return this.entityManager;
+		}
 }
