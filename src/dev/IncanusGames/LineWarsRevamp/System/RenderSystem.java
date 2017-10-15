@@ -35,10 +35,11 @@ public class RenderSystem implements SubSystem{
 				game.entityManager.getComponent(i, Renderable.class).setCurrentDealyTimer(
 						(game.entityManager.getComponent(i, Renderable.class).getCurrentDealyTimer() + 1)); //increment delay timer 
 				if(game.entityManager.getComponent(i, Renderable.class).getTransitionDelay()  //see it delay timer is greater than T-delay
-						<= game.entityManager.getComponent(i, Renderable.class).getCurrentDealyTimer()) { //set next frame to current frame + 1 % maxframe-1 
+						== game.entityManager.getComponent(i, Renderable.class).getCurrentDealyTimer()) { //set next frame to current frame + 1 % maxframe-1 
 					game.entityManager.getComponent(i, Renderable.class).setFrame(
 							(game.entityManager.getComponent(i, Renderable.class).getFrame() + 1) 
-							% (game.entityManager.getComponent(i, Renderable.class).getMaxframe()-1));
+							% (game.entityManager.getComponent(i, Renderable.class).getMaxframe()));
+					game.entityManager.getComponent(i, Renderable.class).setCurrentDealyTimer(0);
 				}
 				
 				g.drawImage(SpriteSheetManager.AnimationMap.get(game.entityManager.getComponent(i, Renderable.class).getAnimationName()).get(game.entityManager.getComponent(i, Renderable.class).getFrame()), 		

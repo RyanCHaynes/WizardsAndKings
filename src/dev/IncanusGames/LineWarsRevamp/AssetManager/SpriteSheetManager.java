@@ -14,6 +14,13 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(263,142,"AlphaBG1",1,5));
 		SpriteSheets.add(new SpriteSheet(32,32,"SkeletalSwordsman",1,3));
 		SpriteSheets.add(new SpriteSheet(32,32,"SlashAnim",4,3));
+		SpriteSheets.add(new SpriteSheet(44,34,"Sun",3,4));
+		SpriteSheets.add(new SpriteSheet(310,106,"Sky",1,5));
+		SpriteSheets.add(new SpriteSheet(455,105,"Foreground",1,3));
+		SpriteSheets.add(new SpriteSheet(53,32,"LavaTop",3,4));
+		SpriteSheets.add(new SpriteSheet(51,78,"Lava",1,4));
+		SpriteSheets.add(new SpriteSheet(78,94,"GoodCastle",5,3));
+		
 		loadSpriteSheets();
 		loadAnimationMap();
 	}
