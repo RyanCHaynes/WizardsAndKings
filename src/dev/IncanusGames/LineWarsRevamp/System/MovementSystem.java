@@ -13,10 +13,10 @@ public class MovementSystem implements SubSystem{
 	
 	public MovementSystem(Game g) {
 		this.game = g;
-		l = game.entityManager.getAllEntititiesWithComponentType(Movement.class);
 	}
 	
 	public void Update() {
+		l = game.entityManager.getAllEntititiesWithComponentType(Movement.class);
 		for (Integer entity : l ) {
 			if(game.entityManager.getComponent(entity, Movement.class).isMovement()) {
 				game.entityManager.getComponent(entity, Position.class).setX(game.entityManager.getComponent(entity, Vector2d.class).getX() + 

@@ -27,17 +27,20 @@ public class Game implements Runnable{
 		public EntityManager entityManager;
 		
 		
+		private static int baseFPS = 60;
+		private static double MS_PER_UPDATE = 1000000000/baseFPS;
+		
 		Game(String t, int w, int h){
 			title = t;
 			width = w;
 			height = h;
 		}
 		
-		private void tick(){
+		private void update(){
 			if(State.getState() != null)
 				State.getState().tick();
 		}
-		private void render(){
+		private void render(double deltaTimeRender){
 			bs = display.getCanvas().getBufferStrategy();
 			if (bs  == null){
 				display.getCanvas().createBufferStrategy(3);
@@ -83,32 +86,28 @@ public class Game implements Runnable{
 		}
 		public void run() {
 			init();
-			int fps = 60;
-			double timePerTick = 1000000000/fps;
+			double previousTime = System.nanoTime();
 			double deltaTime = 0;
-			long currentTime;
-			long lastTime = System.nanoTime();
-			long timer = 0;
-			int ticks =0;
-			
-			while(running){
-				currentTime = System.nanoTime();
-				deltaTime += (currentTime - lastTime)/timePerTick;
-				timer += currentTime - lastTime;
-				lastTime = currentTime;
-				
-				if(deltaTime >= 1){
-					tick();
-					render();
-					ticks++;
-					deltaTime--;
+			while (true) {
+				double currentTime = System.nanoTime();
+				double elapsedTime = currentTime - previousTime;
+				previousTime = currentTime;
+				deltaTime += elapsedTime;
+				if (1000 == System.currentTimeMillis()) {
+					System.out.println("1 second");
 				}
+				while (deltaTime >= MS_PER_UPDATE) {
+					update();
+					deltaTime -= MS_PER_UPDATE;
+				}
+				render(deltaTime/MS_PER_UPDATE);//passing in (deltaTime / MS_PER_UPDATE) for smooth rendering
 			}
 			
-			
-			stop();
 		}
 		public Graphics getGraphics(){
 			return this.g;
+		}
+		public EntityManager getEntityManager() {
+			return this.entityManager;
 		}
 }

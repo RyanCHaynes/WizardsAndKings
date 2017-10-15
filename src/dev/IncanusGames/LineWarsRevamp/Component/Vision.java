@@ -1,11 +1,16 @@
 package dev.IncanusGames.LineWarsRevamp.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Vision implements Component{
 	private boolean target, visible, facingForward;
 	private int range;
 	private List<Integer> inRange;
+	
+	public Vision(){
+		inRange = new ArrayList<Integer>();
+	}
 	
 	public boolean isTarget() {
 		return target;
