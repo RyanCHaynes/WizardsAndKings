@@ -6,6 +6,8 @@ import java.util.List;
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.Component.TimedLife;
 
+
+//
 public class TimedLifeSystem {
 	private List<Integer> l;
 	private List<Integer> remove;

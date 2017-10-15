@@ -25,8 +25,8 @@ public class BehaviorSystem implements SubSystem{
 				game.entityManager.getComponent(entity, Movement.class).setMovement(true);
 				if(game.entityManager.getComponent(entity, Vision.class).isTarget()) {
 					game.entityManager.getComponent(entity, Movement.class).setMovement(false);
-					if(game.entityManager.getComponent(entity, Attack.class).getCoolDown() <= //if the entities attack is not on cooldown
-						game.entityManager.getComponent(entity, Attack.class).getCurrentCD())  
+					if(game.entityManager.getComponent(entity, Attack.class).getCoolDown() / //if the entities attack is not on cooldown
+						game.entityManager.getComponent(entity, Attack.class).getCurrentCD() == 1)  
 					{
 						game.entityManager.getComponent(entity, Attack.class).setCanAttack(true); //Attack logic on
 					}
@@ -38,4 +38,4 @@ public class BehaviorSystem implements SubSystem{
 			}
 		}
 	}
-}
+}  

@@ -10,12 +10,15 @@ import dev.IncanusGames.LineWarsRevamp.Component.Component;
 
 public final class EntityManager {
 	private static int lowestUnassignedEntityID=1;
-	public  List<Integer> Entities;
-	public  HashMap<Class<?>, HashMap<Integer, ? extends Component>> componentStores;
+	public  List<Integer> Entities; //List of entities 
+	private HashMap<Integer, LinkedList<Component>> EntityComponentMap; //Which components are in which entities
+	public  HashMap<Class<?>, HashMap<Integer, ? extends Component>> componentStores;  // Component Type matched w/ HashMap of Entity to - instantiated component	
 	
+
 	public EntityManager(){
 		Entities = new LinkedList<Integer>();
 		componentStores = new HashMap<Class<?>, HashMap<Integer, ? extends Component>>();
+		EntityComponentMap = new HashMap<Integer, LinkedList<Component>>();
 	}
 	public <T extends Component> List<Integer> getAllEntititiesWithComponentType(Class<T> componentType){
 		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
@@ -25,6 +28,17 @@ public final class EntityManager {
 		else{
 			List<Integer> result = new ArrayList<Integer>((java.util.Collection<Integer>)store.keySet());
 			return result;}
+	}
+	public void removeEntity(int entityID) {
+		//System.out.println(EntityComponentMap.get(entityID).size());
+		for (Component Ca : EntityComponentMap.get(entityID)) { //for every component type the entity has remove it from the ComponentStores
+			componentStores.get(Ca.getClass()).remove(entityID);
+		}
+		System.out.println("Removing: "+entityID);
+		System.out.println("From: "+EntityComponentMap.keySet());
+		System.out.println(EntityComponentMap.containsKey(entityID)); //removing entity from EntityComponentMap
+		EntityComponentMap.get(entityID).clear();
+		EntityComponentMap.remove(entityID);
 	}
 	
 	public <T extends Component> T getComponent(int entity, Class<T> componentType){
@@ -54,8 +68,8 @@ public final class EntityManager {
 			componentStores.put(component.getClass(), store);
 		}
 		((HashMap<Integer, T>)store).put(entity, component);
+		EntityComponentMap.get(entity).addLast(component);
 	}
-	
 	public int createEntity(){
 		int newID = generateNewEntityID();
 		if(newID < 1){
@@ -63,10 +77,11 @@ public final class EntityManager {
 		}
 		else {
 			Entities.add(newID);
+			EntityComponentMap.put(newID, new LinkedList<>());
 			return newID;
 		}
 	}
-	public int generateNewEntityID(){
+	private int generateNewEntityID(){
 		synchronized(this) {
 			if(lowestUnassignedEntityID < Integer.MAX_VALUE){
 				return lowestUnassignedEntityID++;

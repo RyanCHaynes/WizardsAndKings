@@ -17,9 +17,10 @@ public class DeathSystem implements SubSystem{
 	public void Update() {
 		l = game.entityManager.getAllEntititiesWithComponentType(Death.class);
 		for (Integer entity : l ) {
-				if(game.entityManager.getComponent(entity, Health.class).getHP() <= 0) {
-					game.entityManager.getComponent(entity, Health.class).setAlive(false);
+				if(!game.entityManager.getComponent(entity, Health.class).isAlive()) {
+					game.getEntityManager().removeEntity(entity);
+					System.out.println("L = " + l);
 				}
-		}
+			}
 	}
 }

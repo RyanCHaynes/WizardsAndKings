@@ -11,7 +11,7 @@ import dev.IncanusGames.LineWarsRevamp.EntityManager.EntityManager;
 
 //Problems
 //Order of rendering to screen matters, this system does not account for that. 
-
+//Smooth rendering yet implemented (drawing at scaled positions)
 
 public class RenderSystem implements SubSystem{
 	private List<Integer> l;

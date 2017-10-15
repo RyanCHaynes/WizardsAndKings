@@ -13,7 +13,6 @@ import dev.IncanusGames.LineWarsRevamp.System.DeathSystem;
 import dev.IncanusGames.LineWarsRevamp.System.HealthSystem;
 import dev.IncanusGames.LineWarsRevamp.System.MovementSystem;
 import dev.IncanusGames.LineWarsRevamp.System.RenderSystem;
-import dev.IncanusGames.LineWarsRevamp.System.TimedLifeSystem;
 import dev.IncanusGames.LineWarsRevamp.System.VisionSystem;
 
 public class GameState extends State{
@@ -27,7 +26,6 @@ public class GameState extends State{
 	private BehaviorSystem B;
 	private VisionSystem V;
 	private AttackSystem Asys;
-	private TimedLifeSystem TLsys;
 	private DeathSystem Dsys;
 	private HealthSystem Hsys;
 	
@@ -37,7 +35,7 @@ public class GameState extends State{
 		UA = new UnitAssembler(game);
 		GfxA = new GfxAssembler(game);
 		Asys = new AttackSystem(game);
-		background = game.entityManager.generateNewEntityID();
+		background = game.entityManager.createEntity();
 		
 		
 		game.entityManager.addComponent(background, new Position(0,0));
@@ -50,7 +48,6 @@ public class GameState extends State{
 		M = new MovementSystem(game);
 		B = new BehaviorSystem(game);
 		V= new VisionSystem(game);
-		TLsys= new TimedLifeSystem(game);
 		Dsys = new DeathSystem(game);
 		Hsys = new HealthSystem(game);
 		Asys = new AttackSystem(game);
@@ -61,10 +58,8 @@ public class GameState extends State{
 		V.Update();
 		M.Update();
 		Asys.Update();
-		TLsys.Update();
 		Dsys.Update();
 		Hsys.Update();
-		Asys.Update();
 		B.Update();
 	}
 

@@ -19,57 +19,50 @@ public class AttackSystem implements SubSystem{
 	
 	public void Update() {
 		l = game.entityManager.getAllEntititiesWithComponentType(Attack.class);
+		int counter = 0;
 		for (Integer entity : l ) {
-			if(game.entityManager.getComponent(entity, Attack.class).isCanAttack()) {
-				if(game.getEntityManager().getComponent(entity, Vision.class).isTarget()) {
-					int closest = -999;
-					
+			int closest = -99; //set NULL flag for ID of target
+			if(game.entityManager.getComponent(entity, Attack.class).isCanAttack()) {//if the entity can attack
+				if(game.getEntityManager().getComponent(entity, Vision.class).isTarget()) { //check if it has a target then calculate the closest one
 					if (game.entityManager.getComponent(entity, Vision.class).isFacingForward()) { //if facing right calculate closest target
 						for(int i : game.getEntityManager().getComponent(entity, Vision.class).getInRange())
-						{ if (closest == -999) closest = i; //if there is no closest
-						else if (game.getEntityManager().getComponent(entity, Position.class).getX() +
+						{ if (closest == -99) {closest = i;}//if there is no closest yet, set closest to ID of first entity checked
+						else if (game.getEntityManager().getComponent(entity, Position.class).getX() + //else check which entity is closest
 								game.getEntityManager().getComponent(i, Position.class).getX() < 
 								game.getEntityManager().getComponent(entity, Position.class).getX() +
 								game.getEntityManager().getComponent(closest, Position.class).getX()
-								) { //damage closest target
-							game.getEntityManager().getComponent(closest, Health.class).setHP(game.getEntityManager().getComponent(closest, Health.class).getHP()
-									- game.getEntityManager().getComponent(entity, Attack.class).getDamage());
-
-							GfxAssembler.newTimedAnimation(game.entityManager.getComponent(entity, Attack.class).getAnimation(), 
-									game.entityManager.getComponent(entity, Vision.class).isFacingForward(),
-									game.entityManager.getComponent(entity, Position.class).getX(), 
-									game.entityManager.getComponent(entity, Position.class).getY());
-
-							game.entityManager.getComponent(entity, Attack.class).setCanAttack(false);
-							game.entityManager.getComponent(entity, Attack.class).setCurrentCD(0);
+								) {
+							closest = i;
 						}
 					}
 					}
-					else { //if facing left calculate closest target
-						for(int i : game.getEntityManager().getComponent(entity, Vision.class).getInRange())
-						{ if (closest == -999) closest = i; //if there is no closest
+					else {  closest = -99; //reset flag
+						//if facing left calculate closest target
+						for(int j : game.getEntityManager().getComponent(entity, Vision.class).getInRange())
+						{	
+							if (closest == -99) {closest = j;}
 						else if (game.getEntityManager().getComponent(entity, Position.class).getX() +
-								game.getEntityManager().getComponent(i, Position.class).getX() > 
+								game.getEntityManager().getComponent(j, Position.class).getX() > 
 								game.getEntityManager().getComponent(entity, Position.class).getX() +
 								game.getEntityManager().getComponent(closest, Position.class).getX()
-								) { 
-							game.getEntityManager().getComponent(closest, Health.class).setHP(game.getEntityManager().getComponent(closest, Health.class).getHP()
-									- game.getEntityManager().getComponent(entity, Attack.class).getDamage());
-
-							GfxAssembler.newTimedAnimation(game.entityManager.getComponent(entity, Attack.class).getAnimation(), 
-									game.entityManager.getComponent(entity, Vision.class).isFacingForward(),
-									game.entityManager.getComponent(entity, Position.class).getX(), 
-									game.entityManager.getComponent(entity, Position.class).getY());
+								) {
+							closest = j;
 						}
 						}
 					}
+					//Damage and animation change here?
+					
 				}
-					//
+				game.entityManager.getComponent(entity, Attack.class).setCurrentCD(0);
 			}
 			else {
 				game.entityManager.getComponent(entity, Attack.class).setCurrentCD(
 						game.entityManager.getComponent(entity, Attack.class).getCurrentCD() +1);
-				System.out.println(game.entityManager.getComponent(entity, Attack.class).getCurrentCD());
+			}
+			if (closest != entity && closest != -99) {
+				game.entityManager.getComponent(closest, Health.class).setHP(game.entityManager.getComponent(closest, Health.class).getHP() - 
+						game.entityManager.getComponent(entity, Attack.class).getDamage());
+				System.out.println(closest + " damaged, current health: " + game.entityManager.getComponent(closest, Health.class).getHP());
 			}
 		}
 	}
