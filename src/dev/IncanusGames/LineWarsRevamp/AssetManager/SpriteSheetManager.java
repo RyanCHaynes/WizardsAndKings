@@ -20,7 +20,9 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(53,32,"LavaTop",3,4));
 		SpriteSheets.add(new SpriteSheet(51,78,"Lava",1,4));
 		SpriteSheets.add(new SpriteSheet(78,94,"GoodCastle",5,3));
-		
+		SpriteSheets.add(new SpriteSheet(81,89,"EvilCastle",1,3));
+		SpriteSheets.add(new SpriteSheet(17,24,"KnightStand",4,1));
+		SpriteSheets.add(new SpriteSheet(20,20,"attackUI",2,7));
 		loadSpriteSheets();
 		loadAnimationMap();
 	}

@@ -93,14 +93,13 @@ public class Game implements Runnable{
 				double elapsedTime = currentTime - previousTime;
 				previousTime = currentTime;
 				deltaTime += elapsedTime;
-				if (1000 == System.currentTimeMillis()) {
-					System.out.println("1 second");
-				}
 				while (deltaTime >= MS_PER_UPDATE) {
 					update();
 					deltaTime -= MS_PER_UPDATE;
+					render(deltaTime/MS_PER_UPDATE);
 				}
-				render(deltaTime/MS_PER_UPDATE);//passing in (deltaTime / MS_PER_UPDATE) for smooth rendering
+				//render(deltaTime/MS_PER_UPDATE);
+				//render(deltaTime/MS_PER_UPDATE);//passing in (deltaTime / MS_PER_UPDATE) for smooth rendering
 			}
 			
 		}
