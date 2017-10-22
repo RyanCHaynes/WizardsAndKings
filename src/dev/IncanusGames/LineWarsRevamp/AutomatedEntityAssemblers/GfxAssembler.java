@@ -3,7 +3,6 @@ package dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers;
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
-import dev.IncanusGames.LineWarsRevamp.Component.TimedLife;
 
 public  class GfxAssembler extends Assembler{
 

@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import dev.IncanusGames.LineWarsRevamp.AssetManager.SpriteSheetManager;
+import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.GfxAssembler;
+import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.UnitAssembler;
 import dev.IncanusGames.LineWarsRevamp.Display.Display;
 import dev.IncanusGames.LineWarsRevamp.EntityManager.EntityManager;
 import dev.IncanusGames.LineWarsRevamp.InputManagers.KeyManager;
@@ -22,9 +24,11 @@ public class Game implements Runnable{
 		private String title;
 		private int width, height;
 		private State GameState;
-		private KeyManager keyManager;
-		private MouseManager mouseManager;
+		public KeyManager keyManager;
+		public MouseManager mouseManager;
 		public EntityManager entityManager;
+		public UnitAssembler UA;
+		public GfxAssembler GfxA;
 		
 		
 		private static int baseFPS = 60;
@@ -65,6 +69,9 @@ public class Game implements Runnable{
 			display.getFrame().addKeyListener(keyManager = new KeyManager());
 			display.getCanvas().addMouseListener(mouseManager = new MouseManager());
 			display.getCanvas().addMouseMotionListener(mouseManager);
+			UA = new UnitAssembler(this);
+			GfxA = new GfxAssembler(this);
+			
 			State.setState(GameState);
 		}
 		

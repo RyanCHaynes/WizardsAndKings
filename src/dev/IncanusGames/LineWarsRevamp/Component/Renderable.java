@@ -17,6 +17,13 @@ public class Renderable implements Component{
 		this.transitionDelay = transiotionDelay;
 	}
 	
+	public void setNewAnimation(String animationName, int transiotionDelay, int currentFrame, int frameCount) {
+		this.animationName = animationName;
+		this.frame = currentFrame;
+		this.frameCount = frameCount;
+		this.transitionDelay = transiotionDelay;
+	}
+	
 	public int getMaxframe() {
 		return frameCount;
 	}

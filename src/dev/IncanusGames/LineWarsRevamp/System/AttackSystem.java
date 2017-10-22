@@ -3,10 +3,10 @@ package dev.IncanusGames.LineWarsRevamp.System;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
-import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.GfxAssembler;
 import dev.IncanusGames.LineWarsRevamp.Component.Attack;
 import dev.IncanusGames.LineWarsRevamp.Component.Health;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
+import dev.IncanusGames.LineWarsRevamp.Component.Target;
 import dev.IncanusGames.LineWarsRevamp.Component.Vision;
 
 public class AttackSystem implements SubSystem{
@@ -23,7 +23,7 @@ public class AttackSystem implements SubSystem{
 		for (Integer entity : l ) {
 			int closest = -99; //set NULL flag for ID of target
 			if(game.entityManager.getComponent(entity, Attack.class).isCanAttack()) {//if the entity can attack
-				if(game.getEntityManager().getComponent(entity, Vision.class).isTarget()) { //check if it has a target then calculate the closest one
+				if(game.getEntityManager().getComponent(entity, Target.class).isTargeting()) { //check if it has a target then calculate the closest one
 					if (game.entityManager.getComponent(entity, Vision.class).isFacingForward()) { //if facing right calculate closest target
 						for(int i : game.getEntityManager().getComponent(entity, Vision.class).getInRange())
 						{ if (closest == -99) {closest = i;}//if there is no closest yet, set closest to ID of first entity checked
