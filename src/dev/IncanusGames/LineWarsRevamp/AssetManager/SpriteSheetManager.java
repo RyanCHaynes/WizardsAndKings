@@ -23,6 +23,8 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(81,89,"EvilCastle",1,3));
 		SpriteSheets.add(new SpriteSheet(17,24,"KnightStand",4,1));
 		SpriteSheets.add(new SpriteSheet(20,20,"attackUI",2,7));
+		SpriteSheets.add(new SpriteSheet(128,40,"FillerUI",1,2));
+		SpriteSheets.add(new SpriteSheet(32,32,"A01",1,2));
 		loadSpriteSheets();
 		loadAnimationMap();
 	}

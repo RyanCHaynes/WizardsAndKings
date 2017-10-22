@@ -20,6 +20,14 @@ public final class EntityManager {
 		componentStores = new HashMap<Class<?>, HashMap<Integer, ? extends Component>>();
 		EntityComponentMap = new HashMap<Integer, LinkedList<Component>>();
 	}
+	
+	public boolean hasComponentType(int entity, Class componentType) {
+		for (Component Ca : EntityComponentMap.get(entity)) { //for every component type the entity has remove it from the ComponentStores
+			if (Ca.getClass() == componentType) return true;
+		}
+		return false;
+	}
+	
 	public <T extends Component> List<Integer> getAllEntititiesWithComponentType(Class<T> componentType){
 		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
 		if (store == null){
@@ -70,6 +78,12 @@ public final class EntityManager {
 		((HashMap<Integer, T>)store).put(entity, component);
 		EntityComponentMap.get(entity).addLast(component);
 	}
+	
+	public void changeComponent(int entity, Component componentA, Component componentR){
+		this.componentStores.get(componentA.getClass()).values();
+		System.out.println("Changing component" + componentA.getClass());
+	}
+	
 	public int createEntity(){
 		int newID = generateNewEntityID();
 		if(newID < 1){

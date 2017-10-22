@@ -7,7 +7,9 @@ import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.SpriteSheetManager;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
-import dev.IncanusGames.LineWarsRevamp.EntityManager.EntityManager;
+import dev.IncanusGames.LineWarsRevamp.Component.Physics.Collidable;
+import dev.IncanusGames.LineWarsRevamp.Component.Physics.RectangleHitbox;
+import dev.IncanusGames.LineWarsRevamp.Component.UI.Clickable;
 
 //Problems
 //Order of rendering to screen matters, this system does not account for that. 
@@ -45,6 +47,18 @@ public class RenderSystem implements SubSystem{
 				g.drawImage(SpriteSheetManager.AnimationMap.get(game.entityManager.getComponent(i, Renderable.class).getAnimationName()).get(game.entityManager.getComponent(i, Renderable.class).getFrame()), 		
 				game.entityManager.getComponent(i, Position.class).getX(),
 				game.entityManager.getComponent(i, Position.class).getY(), null);
+				
+				
+				
+				
+				//Drawing rects to visualize hitboxes
+				if(game.entityManager.hasComponentType(i, Collidable.class) && game.getEntityManager().getComponent(i, Clickable.class).isSelected()) {
+					g.drawOval(game.entityManager.getComponent(i, RectangleHitbox.class).getX(), game.entityManager.getComponent(i, RectangleHitbox.class).getY(),
+					game.entityManager.getComponent(i, RectangleHitbox.class).getWidth() - game.entityManager.getComponent(i, RectangleHitbox.class).getX()
+					, game.entityManager.getComponent(i, RectangleHitbox.class).getHeight()-game.entityManager.getComponent(i, RectangleHitbox.class).getY());
+					
+				}
+				
 			}
 		}
 	}
