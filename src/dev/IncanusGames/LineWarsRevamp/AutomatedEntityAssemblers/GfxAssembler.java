@@ -13,7 +13,6 @@ public  class GfxAssembler extends Assembler{
 	public static int newTimedAnimation(String anim, boolean Direction, int posX, int posY){
 		int entityID = Assembler.E.createEntity();
 		Assembler.E.addComponent(entityID, new Position(posX,posY));
-		Assembler.E.addComponent(entityID, new Renderable(anim, 1, 0, 4));
 		System.out.println("Slash");
 		return entityID;
 	}

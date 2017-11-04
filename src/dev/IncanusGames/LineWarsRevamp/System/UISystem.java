@@ -20,7 +20,6 @@ public class UISystem implements SubSystem{
 				if(game.getEntityManager().getComponent(entity, Clickable.class).isSelected() ) {
 					game.getEntityManager().getComponent(entity, Clickable.class).setSelected(false);
 					game.getEntityManager().getComponent(entity, UI.class).setTriggerAction(true);
-					System.out.println("Yes");
 				} else game.getEntityManager().getComponent(entity, UI.class).setTriggerAction(false);
 			}
 	}

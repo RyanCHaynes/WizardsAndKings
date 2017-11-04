@@ -1,25 +1,25 @@
 package dev.IncanusGames.LineWarsRevamp.Component;
 
 public class Position implements Component{
-	private int x, y;
+	private float x, y;
 	
-	public Position(int x, int y) {
+	public Position(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	

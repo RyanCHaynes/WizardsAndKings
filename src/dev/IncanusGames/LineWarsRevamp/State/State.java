@@ -26,8 +26,8 @@ public abstract class State {
 		this.game = game;
 	}
 	
-	public abstract void tick();
+	public abstract void tick(double deltaTimeUpdate);
 	
-	public abstract void render(Graphics g);
+	public abstract void render(Graphics g, double deltaTimeUpdate);
 	
 }

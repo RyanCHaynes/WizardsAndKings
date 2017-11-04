@@ -1,9 +1,11 @@
 package dev.IncanusGames.LineWarsRevamp;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import dev.IncanusGames.LineWarsRevamp.AssetManager.AnimationDataManager;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.SpriteSheetManager;
 import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.GfxAssembler;
 import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.UnitAssembler;
@@ -27,6 +29,7 @@ public class Game implements Runnable{
 		public KeyManager keyManager;
 		public MouseManager mouseManager;
 		public EntityManager entityManager;
+		public AnimationDataManager ADH;
 		public UnitAssembler UA;
 		public GfxAssembler GfxA;
 		
@@ -40,9 +43,9 @@ public class Game implements Runnable{
 			height = h;
 		}
 		
-		private void update(){
+		private void update(double deltaTimeUpdate){
 			if(State.getState() != null)
-				State.getState().tick();
+				State.getState().tick(deltaTimeUpdate);
 		}
 		private void render(double deltaTimeRender){
 			bs = display.getCanvas().getBufferStrategy();
@@ -51,11 +54,11 @@ public class Game implements Runnable{
 				return;
 			}
 			g = bs.getDrawGraphics();
-			
+			g.setColor(Color.red);
 			g.clearRect(0, 0, width, height);
 			
 			if(State.getState() != null)
-				State.getState().render(g);
+				State.getState().render(g, deltaTimeRender);
 
 			bs.show();
 			g.dispose();
@@ -64,6 +67,7 @@ public class Game implements Runnable{
 		private void init(){
 			entityManager = new EntityManager();
 			SpriteSheetManager.init();
+			AnimationDataManager.init();
 			display = new Display(title, width, height);
 			GameState = new GameState(this);
 			display.getFrame().addKeyListener(keyManager = new KeyManager());
@@ -101,9 +105,9 @@ public class Game implements Runnable{
 				previousTime = currentTime;
 				deltaTime += elapsedTime;
 				while (deltaTime >= MS_PER_UPDATE) {
-					update();
+					update(deltaTime/MS_PER_UPDATE); //passing in a scalar for logic normalization across processing speeds
+					render(deltaTime/MS_PER_UPDATE); //passing in a scalar for rendering
 					deltaTime -= MS_PER_UPDATE;
-					render(deltaTime/MS_PER_UPDATE);
 				}
 				//render(deltaTime/MS_PER_UPDATE);
 				//render(deltaTime/MS_PER_UPDATE);//passing in (deltaTime / MS_PER_UPDATE) for smooth rendering

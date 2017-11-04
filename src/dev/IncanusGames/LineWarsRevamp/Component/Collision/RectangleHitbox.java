@@ -1,35 +1,16 @@
-package dev.IncanusGames.LineWarsRevamp.Component.Physics;
+package dev.IncanusGames.LineWarsRevamp.Component.Collision;
 
 import dev.IncanusGames.LineWarsRevamp.Component.Component;
 
 public class RectangleHitbox implements Component{
-
-	private int x, y, height, width;
+		private int height, width;
 	
 	
-	public RectangleHitbox(int x,int y,int width,int height) {
-		this.x =x;
-		this.y = y;
+	public RectangleHitbox(int width,int height) {
 		this.width = width;
 		this.height = height;
 	}
 	
-	
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
 
 	public int getHeight() {
 		return height;

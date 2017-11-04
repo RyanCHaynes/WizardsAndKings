@@ -27,7 +27,7 @@ public class UIBehaviorSystem implements SubSystem{
 					{
 					case "spawnKnight":
 						if (game.getEntityManager().getComponent(entity, Timer.class).isReady()) {
-							game.UA.createHumanFootKnight(220 , 540 , true);
+							game.UA.createHumanMountedKnight(220 , 540 , true);
 							game.getEntityManager().getComponent(entity, Timer.class).setReady(false);
 						}
 						else System.out.println("spawn Knight UI on cooldown for" +game.getEntityManager().getComponent(entity, Timer.class).getCurrentCoolDown());

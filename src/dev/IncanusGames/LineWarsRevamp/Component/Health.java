@@ -1,13 +1,13 @@
 package dev.IncanusGames.LineWarsRevamp.Component;
 
 public class Health implements Component{
-
-	private int hp;
+	private int hp, maxHp;
 	private boolean alive;
 	
 	
 	
 	public Health(int hp){
+		this.maxHp = hp;
 		this.hp = hp;
 		this.alive = true;
 	}
@@ -24,5 +24,12 @@ public class Health implements Component{
 	}
 	public int getHP() {
 		return hp;
+	}
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
 	}
 }

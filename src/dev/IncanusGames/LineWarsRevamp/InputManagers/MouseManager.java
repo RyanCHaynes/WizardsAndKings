@@ -19,14 +19,17 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		position = arg0.getPoint();
+		rightClick = false;
+		leftClick = false;
 		if(SwingUtilities.isRightMouseButton(arg0)) {
 			rightClick = true;
-			System.out.println("eyy R");
-		} else if(SwingUtilities.isLeftMouseButton(arg0)) {
+			//System.out.println("eyy R");
+		} 
+		if(SwingUtilities.isLeftMouseButton(arg0)) {
 			leftClick = true;
-			System.out.println("eyy L");
+			//System.out.println("eyy L");
 		}
-		System.out.println("Mouse pressed @ "+position);
+		//System.out.println("Mouse pressed @ "+position);
 	}
 
 	@Override
@@ -44,6 +47,16 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		pressed = true;
+		rightClick = false;
+		leftClick = false;
+		if(SwingUtilities.isRightMouseButton(arg0)) {
+			rightClick = true;
+			//System.out.println("eyy R");
+		} 
+		if(SwingUtilities.isLeftMouseButton(arg0)) {
+			leftClick = true;
+			//System.out.println("eyy L");
+		}
 	}
 
 	@Override
@@ -51,12 +64,17 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 		pressed = false;
 		rightClick = false;
 		leftClick = false;
-		
 	}
+	
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		position = arg0.getPoint();
-		System.out.println("Mouse Dragged @ "+position);
+		if(SwingUtilities.isRightMouseButton(arg0)) {
+			rightClick = true;
+		} else if(SwingUtilities.isLeftMouseButton(arg0)) {
+			leftClick = true;
+		}
+		//System.out.println("Mouse Dragged @ "+position);
 	}
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
