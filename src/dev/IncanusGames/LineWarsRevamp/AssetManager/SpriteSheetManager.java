@@ -25,33 +25,33 @@ public class SpriteSheetManager {
 	
 	private static void initGood() {
 		SpriteSheets.add(new SpriteSheet(410/10,32,"mountedKnight_Move",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"mountedKnight_Stand",10,1));
+		SpriteSheets.add(new SpriteSheet(152/4,31,"mountedKnight_Stand",4,1));
 		
-		SpriteSheets.add(new SpriteSheet(410/10,32,"footKnight_Move",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"footKnight_Stand",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"footKnight_Attack",10,1));
+		SpriteSheets.add(new SpriteSheet(64/4,24,"footKnight_Move",4,1));
+		SpriteSheets.add(new SpriteSheet(128/4,23,"footKnight_Stand",4,1));
+		//SpriteSheets.add(new SpriteSheet(410/10,32,"footKnight_Attack",10,1));
 		
-		SpriteSheets.add(new SpriteSheet(410/10,32,"GoodCastle_MaxLife",10,1));
+		SpriteSheets.add(new SpriteSheet(390/5,94,"GoodCastle_MaxLife",5,3));
 		
 	}
 	private static void initEvil() {
-		SpriteSheets.add(new SpriteSheet(410/10,32,"EvilCastle_MaxLife",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"EvilCastle_Mouth",10,1));
+		SpriteSheets.add(new SpriteSheet(81/1,89,"EvilCastle_MaxLife",1,3));
+		SpriteSheets.add(new SpriteSheet(50/1,45,"EvilCastle_Mouth",1,1));
 		
-		SpriteSheets.add(new SpriteSheet(410/10,32,"Wolf_Move",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"Wolf_Stand",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"Wolf_Attack",10,1));
+		SpriteSheets.add(new SpriteSheet(224/7,18,"Wolf_Move",7,1));
+		SpriteSheets.add(new SpriteSheet(56/2,18,"Wolf_Stand",2,1));
+		SpriteSheets.add(new SpriteSheet(168/6,18,"Wolf_Attack",6,1));
 	}
 	private static void initBackgroud_Beta() {
-		SpriteSheets.add(new SpriteSheet(410/10,32,"Sun_Normal",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"Sky_DayTime",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"ForeGround_DayTime",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"LavaTop_DayTime",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"Lava_DayTime",10,1));
+		SpriteSheets.add(new SpriteSheet(132/3,34,"Sun_Normal",3,4));
+		SpriteSheets.add(new SpriteSheet(310/1,106,"Sky_DayTime",1,5));
+		SpriteSheets.add(new SpriteSheet(455/1,105,"ForeGround_DayTime",1,3));
+		SpriteSheets.add(new SpriteSheet(159/3,32,"LavaTop_DayTime",3,4));
+		SpriteSheets.add(new SpriteSheet(51/1,78,"Lava_DayTime",1,4));
 	}
 	private static void initUI_Beta() {
-		SpriteSheets.add(new SpriteSheet(410/10,32,"FillerUI_Unpressed",10,1));
-		SpriteSheets.add(new SpriteSheet(410/10,32,"FillerUI_Pressed",10,1));
+		SpriteSheets.add(new SpriteSheet(32/1,32,"FillerUI_Unpressed",1,2));
+		SpriteSheets.add(new SpriteSheet(32/1,32,"FillerUI_Pressed",1,1));
 	}
 	
 	private static void loadSpriteSheets() //uploading all graphical assets into the arrayList

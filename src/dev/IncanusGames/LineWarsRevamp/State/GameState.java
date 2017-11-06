@@ -3,10 +3,13 @@ package dev.IncanusGames.LineWarsRevamp.State;
 import java.awt.Graphics;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.Component.ClassType;
+import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
 import dev.IncanusGames.LineWarsRevamp.Component.Timer;
 import dev.IncanusGames.LineWarsRevamp.Component.Collision.RectangleHitbox;
+import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 import dev.IncanusGames.LineWarsRevamp.Component.UI.Clickable;
 import dev.IncanusGames.LineWarsRevamp.Component.UI.UI;
 import dev.IncanusGames.LineWarsRevamp.Component.UI.UIBehaviour;
@@ -86,26 +89,57 @@ public class GameState extends State{
 		fillerUI = game.entityManager.createEntity();
 		
 		game.entityManager.addComponent(Sky, new Position(0,0));
-		game.entityManager.addComponent(Sky, new Renderable("Sky", 0, 0, 1,false));
+		game.entityManager.addComponent(Sky, new Renderable());
+		game.entityManager.addComponent(Sky, new ClassType("Sky"));
+		game.entityManager.addComponent(Sky, new ObjectState("DayTime"));
+		game.entityManager.addComponent(Sky, new Animation());
+		
 		game.entityManager.addComponent(Foreground, new Position(0,370));
-		game.entityManager.addComponent(Foreground, new Renderable("Foreground", 0, 0, 1,false));
+		game.entityManager.addComponent(Foreground, new Renderable());
+		game.entityManager.addComponent(Foreground, new ClassType("ForeGround"));
+		game.entityManager.addComponent(Foreground, new ObjectState("DayTime"));
+		game.entityManager.addComponent(Foreground, new Animation());
+		
 		game.entityManager.addComponent(Lava, new Position(580,456));
-		game.entityManager.addComponent(Lava, new Renderable("Lava", 0, 0, 1,false));
+		game.entityManager.addComponent(Lava, new Renderable());
+		game.entityManager.addComponent(Lava, new ClassType("Lava"));
+		game.entityManager.addComponent(Lava, new ObjectState("DayTime"));
+		game.entityManager.addComponent(Lava, new Animation());
+		
 		game.entityManager.addComponent(LavaTop, new Position(600,400));
-		game.entityManager.addComponent(LavaTop, new Renderable("LavaTop", 30, 0, 3,true));
+		game.entityManager.addComponent(LavaTop, new Renderable());
+		game.entityManager.addComponent(LavaTop, new ClassType("LavaTop"));
+		game.entityManager.addComponent(LavaTop, new ObjectState("DayTime"));
+		game.entityManager.addComponent(LavaTop, new Animation());
+		
 		game.entityManager.addComponent(Sun, new Position(1,4));
-		game.entityManager.addComponent(Sun, new Renderable("Sun", 20, 0, 3,true));
+		game.entityManager.addComponent(Sun, new Renderable());
+		game.entityManager.addComponent(Sun, new ClassType("Sun"));
+		game.entityManager.addComponent(Sun, new ObjectState("Normal"));
+		game.entityManager.addComponent(Sun, new Animation());
+		
 		game.entityManager.addComponent(GoodCastle, new Position(-3,290));
-		game.entityManager.addComponent(GoodCastle, new Renderable("GoodCastle", 10, 0, 5,true));
+		game.entityManager.addComponent(GoodCastle, new Renderable());
+		game.entityManager.addComponent(GoodCastle, new ClassType("GoodCastle"));
+		game.entityManager.addComponent(GoodCastle, new ObjectState("MaxLife"));
+		game.entityManager.addComponent(GoodCastle, new Animation());
+		
 		game.entityManager.addComponent(EvilCastle, new Position(1115,295));
-		game.entityManager.addComponent(EvilCastle, new Renderable("EvilCastle", 0, 0, 1,false));
+		game.entityManager.addComponent(EvilCastle, new Renderable());
+		game.entityManager.addComponent(EvilCastle, new ClassType("EvilCastle"));
+		game.entityManager.addComponent(EvilCastle, new ObjectState("MaxLife"));
+		game.entityManager.addComponent(EvilCastle, new Animation());
+		
 		game.entityManager.addComponent(fillerUI, new Position(550,625));
-		game.entityManager.addComponent(fillerUI, new Renderable("A01", 0, 0, 1,false));
+		game.entityManager.addComponent(fillerUI, new Renderable());
 		game.entityManager.addComponent(fillerUI, new UI());
 		game.entityManager.addComponent(fillerUI, new RectangleHitbox(32*2,32*2));
 		game.entityManager.addComponent(fillerUI, new Clickable("Rect"));
 		game.entityManager.addComponent(fillerUI, new UIBehaviour("spawnKnight"));
 		game.entityManager.addComponent(fillerUI, new Timer(120));
+		game.entityManager.addComponent(fillerUI, new ClassType("FillerUI"));
+		game.entityManager.addComponent(fillerUI, new ObjectState("Unpressed"));
+		game.entityManager.addComponent(fillerUI, new Animation());
 		
 		
 		

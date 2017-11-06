@@ -17,45 +17,45 @@ public class AnimationDataManager {
 	
 	public static void init() {
 		//Good Units<Class Init>
-		AnimationData.put("Human_MountedKnight", new HashMap<String, AnimationDataSheet>());
-		AnimationData.put("Human_FootKnight", new HashMap<String, AnimationDataSheet>());
+		AnimationData.put("mountedKnight", new HashMap<String, AnimationDataSheet>());
+		AnimationData.put("footKnight", new HashMap<String, AnimationDataSheet>());
 		AnimationData.put("Human_Archer", new HashMap<String, AnimationDataSheet>());
 		//Good Units<Data Init>
-		AnimationData.get("Human_MountedKnight").put("Move", new AnimationDataSheet());
-		AnimationData.get("Human_MountedKnight").get("Move").setData(10, 41, 32, 20, "mountedKnight_Move", true, 0);
-		AnimationData.get("Human_MountedKnight").put("Stand", new AnimationDataSheet());
-		AnimationData.get("Human_MountedKnight").get("Stand").setData(4, 152/4, 31, 20, "mountedKnight_Stand", true, 0);
+		AnimationData.get("mountedKnight").put("Move", new AnimationDataSheet());
+		AnimationData.get("mountedKnight").get("Move").setData(10, 41, 32, 20, "mountedKnight_Move", true, 0);
+		AnimationData.get("mountedKnight").put("Stand", new AnimationDataSheet());
+		AnimationData.get("mountedKnight").get("Stand").setData(4, 152/4, 31, 20, "mountedKnight_Stand", true, 0);
 		
 		//Have to fix these animations before use
-		AnimationData.get("Human_FootKnight").put("Move", new AnimationDataSheet());
-		AnimationData.get("Human_FootKnight").get("Move").setData(10, 41, 32, 20, "footKnight_Move", true, 0);
-		AnimationData.get("Human_FootKnight").put("Stand", new AnimationDataSheet());
-		AnimationData.get("Human_FootKnight").get("Stand").setData(10, 41, 32, 20, "footKnight_Stand", true, 0);
-		AnimationData.get("Human_FootKnight").put("Attack", new AnimationDataSheet());
-		AnimationData.get("Human_FootKnight").get("Attack").setData(10, 41, 32, 20, "footKnight_Attack", true, 0);
+		AnimationData.get("footKnight").put("Move", new AnimationDataSheet());
+		AnimationData.get("footKnight").get("Move").setData(10, 41, 32, 20, "footKnight_Move", true, 0);
+		AnimationData.get("footKnight").put("Stand", new AnimationDataSheet());
+		AnimationData.get("footKnight").get("Stand").setData(10, 41, 32, 20, "footKnight_Stand", true, 0);
+		AnimationData.get("footKnight").put("Attack", new AnimationDataSheet());
+		AnimationData.get("footKnight").get("Attack").setData(10, 41, 32, 20, "footKnight_Attack", true, 0);
 		//Good Buildings<Class Init>
 		
 		//Good Buildings<Data Init>
-		AnimationData.put("Good_Castle",  new HashMap<String, AnimationDataSheet>());
-		AnimationData.get("Good_Castle").put("MaxLife", new AnimationDataSheet());
-		AnimationData.get("Good_Castle").get("MaxLife").setData(10, 41, 32, 20, "GoodCastle_MaxLife", true, 0);
+		AnimationData.put("GoodCastle",  new HashMap<String, AnimationDataSheet>());
+		AnimationData.get("GoodCastle").put("MaxLife", new AnimationDataSheet());
+		AnimationData.get("GoodCastle").get("MaxLife").setData(10, 41, 32, 20, "GoodCastle_MaxLife", true, 0);
 		//Evil Buildings <Class Init>
-		AnimationData.put("Evil_Castle",  new HashMap<String, AnimationDataSheet>());
-		AnimationData.get("Evil_Castle").put("MaxLife", new AnimationDataSheet());
-		AnimationData.get("Evil_Castle").get("MaxLife").setData(10, 41, 32, 20, "EvilCastle_MaxLife", true, 0);
+		AnimationData.put("EvilCastle",  new HashMap<String, AnimationDataSheet>());
+		AnimationData.get("EvilCastle").put("MaxLife", new AnimationDataSheet());
+		AnimationData.get("EvilCastle").get("MaxLife").setData(10, 41, 32, 20, "EvilCastle_MaxLife", true, 0);
 				//ComponentSpritesInit
-				AnimationData.get("Evil_Castle").put("Mouth", new AnimationDataSheet());
-				AnimationData.get("Evil_Castle").get("Mouth").setData(10, 41, 32, 20, "EvilCastle_Mouth", true, 0);
+				AnimationData.get("EvilCastle").put("Mouth", new AnimationDataSheet());
+				AnimationData.get("EvilCastle").get("Mouth").setData(10, 41, 32, 20, "EvilCastle_Mouth", true, 0);
 		//Evil Buildings <Data Init>
-		AnimationData.put("Evil_Wolf",  new HashMap<String, AnimationDataSheet>());
-		AnimationData.get("Evil_Wolf").put("Move", new AnimationDataSheet());
-		AnimationData.get("Evil_Wolf").get("Stand").setData(10, 41, 32, 20, "Wolf_Move", true, 0);
-		AnimationData.put("Evil_Wolf",  new HashMap<String, AnimationDataSheet>());
-		AnimationData.get("Evil_Wolf").put("Stand", new AnimationDataSheet());
-		AnimationData.get("Evil_Wolf").get("Stand").setData(10, 41, 32, 20, "Wolf_Stand", true, 0);
-		AnimationData.put("Evil_Wolf",  new HashMap<String, AnimationDataSheet>());
-		AnimationData.get("Evil_Wolf").put("Attack", new AnimationDataSheet());
-		AnimationData.get("Evil_Wolf").get("Attack").setData(10, 41, 32, 20, "Wolf_Attack", true, 0);
+		AnimationData.put("Wolf",  new HashMap<String, AnimationDataSheet>());
+		AnimationData.get("Wolf").put("Move", new AnimationDataSheet());
+		AnimationData.get("Wolf").get("Move").setData(10, 41, 32, 20, "Wolf_Move", true, 0);
+		AnimationData.put("Wolf",  new HashMap<String, AnimationDataSheet>());
+		AnimationData.get("Wolf").put("Stand", new AnimationDataSheet());
+		AnimationData.get("Wolf").get("Stand").setData(10, 41, 32, 20, "Wolf_Stand", true, 0);
+		AnimationData.put("Wolf",  new HashMap<String, AnimationDataSheet>());
+		AnimationData.get("Wolf").put("Attack", new AnimationDataSheet());
+		AnimationData.get("Wolf").get("Attack").setData(10, 41, 32, 20, "Wolf_Attack", true, 0);
 		
 		//Objects
 		
