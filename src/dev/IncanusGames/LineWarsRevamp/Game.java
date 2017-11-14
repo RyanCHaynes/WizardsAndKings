@@ -112,7 +112,6 @@ public class Game implements Runnable{
 				//render(deltaTime/MS_PER_UPDATE);
 				//render(deltaTime/MS_PER_UPDATE);//passing in (deltaTime / MS_PER_UPDATE) for smooth rendering
 			}
-			
 		}
 		public Graphics getGraphics(){
 			return this.g;

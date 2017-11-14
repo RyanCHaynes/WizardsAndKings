@@ -38,14 +38,14 @@ public class AnimationDataManager {
 		//Good Buildings<Data Init>
 		AnimationData.put("GoodCastle",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("GoodCastle").put("MaxLife", new AnimationDataSheet());
-		AnimationData.get("GoodCastle").get("MaxLife").setData(10, 41, 32, 20, "GoodCastle_MaxLife", true, 0);
+		AnimationData.get("GoodCastle").get("MaxLife").setData(5, 41, 32, 20, "GoodCastle_MaxLife", true, 0);
 		//Evil Buildings <Class Init>
 		AnimationData.put("EvilCastle",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("EvilCastle").put("MaxLife", new AnimationDataSheet());
-		AnimationData.get("EvilCastle").get("MaxLife").setData(10, 41, 32, 20, "EvilCastle_MaxLife", true, 0);
+		AnimationData.get("EvilCastle").get("MaxLife").setData(1, 41, 32, 20, "EvilCastle_MaxLife", true, 0);
 				//ComponentSpritesInit
 				AnimationData.get("EvilCastle").put("Mouth", new AnimationDataSheet());
-				AnimationData.get("EvilCastle").get("Mouth").setData(10, 41, 32, 20, "EvilCastle_Mouth", true, 0);
+				AnimationData.get("EvilCastle").get("Mouth").setData(1, 41, 32, 20, "EvilCastle_Mouth", true, 0);
 		//Evil Buildings <Data Init>
 		AnimationData.put("Wolf",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("Wolf").put("Move", new AnimationDataSheet());
@@ -64,25 +64,25 @@ public class AnimationDataManager {
 		//Background/Props
 		AnimationData.put("Sun",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("Sun").put("Normal", new AnimationDataSheet());
-		AnimationData.get("Sun").get("Normal").setData(10, 41, 32, 20, "Sun_Normal", true, 0);
+		AnimationData.get("Sun").get("Normal").setData(3, 41, 32, 20, "Sun_Normal", true, 0);
 		AnimationData.put("Sky",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("Sky").put("DayTime", new AnimationDataSheet());
-		AnimationData.get("Sky").get("DayTime").setData(10, 41, 32, 20, "Sky_DayTime", true, 0);
+		AnimationData.get("Sky").get("DayTime").setData(1, 41, 32, 20, "Sky_DayTime", true, 0);
 		AnimationData.put("Foreground",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("Foreground").put("DayTime", new AnimationDataSheet());
-		AnimationData.get("Foreground").get("DayTime").setData(10, 41, 32, 20, "ForeGround_DayTime", true, 0);
+		AnimationData.get("Foreground").get("DayTime").setData(1, 41, 32, 20, "ForeGround_DayTime", true, 0);
 		AnimationData.put("LavaTop",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("LavaTop").put("DayTime", new AnimationDataSheet());
-		AnimationData.get("LavaTop").get("DayTime").setData(10, 41, 32, 20, "LavaTop_DayTime", true, 0);
+		AnimationData.get("LavaTop").get("DayTime").setData(3, 41, 32, 20, "LavaTop_DayTime", true, 0);
 		AnimationData.put("Lava",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("Lava").put("DayTime", new AnimationDataSheet());
-		AnimationData.get("Lava").get("DayTime").setData(10, 41, 32, 20, "Lava_DayTime", true, 0);
+		AnimationData.get("Lava").get("DayTime").setData(1, 41, 32, 20, "Lava_DayTime", true, 0);
 		//UI
 		AnimationData.put("FillerUI",  new HashMap<String, AnimationDataSheet>());
 		AnimationData.get("FillerUI").put("Unpressed", new AnimationDataSheet());
-		AnimationData.get("FillerUI").get("Unpressed").setData(10, 41, 32, 20, "FillerUI_Unpressed", true, 0);
+		AnimationData.get("FillerUI").get("Unpressed").setData(1, 41, 32, 20, "FillerUI_Unpressed", true, 0);
 		AnimationData.get("FillerUI").put("Pressed", new AnimationDataSheet());
-		AnimationData.get("FillerUI").get("Pressed").setData(10, 41, 32, 20, "FillerUI_Pressed", true, 0);
+		AnimationData.get("FillerUI").get("Pressed").setData(1, 41, 32, 20, "FillerUI_Pressed", true, 0);
 
 	}
 }

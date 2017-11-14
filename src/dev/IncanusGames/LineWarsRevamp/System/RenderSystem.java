@@ -29,9 +29,8 @@ public class RenderSystem implements SubSystem{
 	public void Update(Graphics g, double DeltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(Renderable.class);
 		for(Integer entity : l) {
-			g.drawImage(SpriteSheetManager.AnimationMap.get(game.entityManager.getComponent(entity, ClassType.class).getClassType() + "_" +
-					game.entityManager.getComponent(entity, ObjectState.class).getState()).
-					get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
+			g.drawImage(SpriteSheetManager.AnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+					.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
 					(int)game.entityManager.getComponent(entity, Position.class).getX(), 
 					(int)game.entityManager.getComponent(entity, Position.class).getY(),
 					null);

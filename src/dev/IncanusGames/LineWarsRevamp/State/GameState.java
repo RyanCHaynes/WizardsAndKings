@@ -13,6 +13,7 @@ import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 import dev.IncanusGames.LineWarsRevamp.Component.UI.Clickable;
 import dev.IncanusGames.LineWarsRevamp.Component.UI.UI;
 import dev.IncanusGames.LineWarsRevamp.Component.UI.UIBehaviour;
+import dev.IncanusGames.LineWarsRevamp.System.AnimationSystem;
 import dev.IncanusGames.LineWarsRevamp.System.ClickableSystem;
 import dev.IncanusGames.LineWarsRevamp.System.CollidableSystem;
 import dev.IncanusGames.LineWarsRevamp.System.MovementSystem;
@@ -36,6 +37,7 @@ public class GameState extends State{
 	private CollidableSystem ColideSys;
 	private UnitCommandSystem UCSys;
 	private PositionSystem Psys;
+	private AnimationSystem Asys;
 	
 	
 	public GameState(Game game) {
@@ -52,6 +54,7 @@ public class GameState extends State{
 		ColideSys = new CollidableSystem(game);
 		UCSys = new UnitCommandSystem(game);
 		Psys = new PositionSystem(game);
+		Asys= new AnimationSystem(game);
 	}
 
 	@Override
@@ -64,6 +67,7 @@ public class GameState extends State{
 		ColideSys.Update();
 		UCSys.Update();
 		Psys.Update(deltaTimeUpdate);
+		Asys.Update(deltaTimeUpdate);
 	}
 
 	@Override
@@ -96,7 +100,7 @@ public class GameState extends State{
 		
 		game.entityManager.addComponent(Foreground, new Position(0,370));
 		game.entityManager.addComponent(Foreground, new Renderable());
-		game.entityManager.addComponent(Foreground, new ClassType("ForeGround"));
+		game.entityManager.addComponent(Foreground, new ClassType("Foreground"));
 		game.entityManager.addComponent(Foreground, new ObjectState("DayTime"));
 		game.entityManager.addComponent(Foreground, new Animation());
 		
