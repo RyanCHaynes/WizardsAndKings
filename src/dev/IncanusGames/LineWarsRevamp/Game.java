@@ -67,7 +67,6 @@ public class Game implements Runnable{
 		private void init(){
 			entityManager = new EntityManager();
 			SpriteSheetManager.init();
-			AnimationDataManager.init();
 			display = new Display(title, width, height);
 			GameState = new GameState(this);
 			display.getFrame().addKeyListener(keyManager = new KeyManager());
@@ -95,6 +94,7 @@ public class Game implements Runnable{
 				
 			}
 		}
+		
 		public void run() {
 			init();
 			double previousTime = System.nanoTime();
