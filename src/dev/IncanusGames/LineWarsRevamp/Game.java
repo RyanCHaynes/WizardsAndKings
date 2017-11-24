@@ -33,6 +33,7 @@ public class Game implements Runnable{
 		public UnitAssembler UA;
 		public GfxAssembler GfxA;
 		
+	
 		
 		private static int baseFPS = 60;
 		private static double MS_PER_UPDATE = 1000000000/baseFPS;

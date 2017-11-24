@@ -10,9 +10,13 @@ import javax.swing.SwingUtilities;
 import javafx.scene.input.MouseButton;
 
 public class MouseManager implements MouseListener, MouseMotionListener{
-	public Point position;
-	public boolean pressed;
-	public boolean leftClick, rightClick;
+	public Point position = new Point();
+	public boolean pressed = false;
+	public boolean leftClick = false, rightClick = false;
+	
+	
+	
+	
 	
 	public void tick(){
 	}

@@ -1,20 +1,29 @@
 package dev.IncanusGames.LineWarsRevamp.Component;
 
 public class Target implements Component{
-	private boolean targeting;
-	private int target;
+	private int x, y, entity;//x,y Are positional targets, Entity is a target witch represents an "in game object"(building, hero, unit)
 
-	public boolean isTargeting() {
-		return targeting;
+	public int getX() {
+		return x;
 	}
-	public void setTargeting(boolean targeting) {
-		this.targeting = targeting;
+
+	public void setX(int x) {
+		this.x = x;
 	}
-	public int getTarget() {
-		return target;
+
+	public int getY() {
+		return y;
 	}
-	public void setTarget(int target) {
-		this.target = target;
+
+	public void setY(int y) {
+		this.y = y;
 	}
-	
+
+	public int getEntity() {
+		return entity;
+	}
+
+	public void setEntity(int entity) {
+		this.entity = entity;
+	}
 }
