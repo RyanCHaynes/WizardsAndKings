@@ -1,0 +1,11 @@
+package dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes;
+
+public enum ObjectStates {
+	UNIT_ATTACK, UNIT_DEFEND, UNIT_IDLE, UNIT_DEATH, UNIT_MOVE, //Unit states
+	
+	UI_OFFCOOLDOWN, UI_ONCOOLDOWN, UI_ACTIVE, UI_PRESSED, UI_NULL, //UI STATES
+	
+	BUILDING_MAXLIFE, BUILDING_PROP0, //BuildingStates
+	
+	PROP_DAY, PROP_NIGHT, PROP_EVENING, PROP_NULL //PROP STATES
+}

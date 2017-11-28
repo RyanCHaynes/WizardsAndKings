@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Commands;
 
 public class CommandList implements Component{
-	private LinkedList<Commands> l;
+	private LinkedList<Commands> l = new LinkedList<Commands>();
 
 	public LinkedList<Commands> getL() {
 		return l;

@@ -1,27 +1,19 @@
 package dev.IncanusGames.LineWarsRevamp.Component;
 
-public class ObjectState implements Component{
-	private String State;
-	private boolean canTransition;
-	
-	
-	public boolean isCanTransition() {
-		return canTransition;
-	}
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
 
-	public void setCanTransition(boolean canTransition) {
-		this.canTransition = canTransition;
-	}
+public class ObjectState implements Component{
+	private ObjectStates State;
 	
-	public ObjectState(String State) {
+	public ObjectState(ObjectStates State) {
 		this.State = State;
 	}
 
-	public String getState() {
+	public ObjectStates getState() {
 		return State;
 	}
 
-	public void setState(String state) {
+	public void setState(ObjectStates state) {
 		State = state;
 	}
 }

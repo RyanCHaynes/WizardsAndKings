@@ -4,7 +4,9 @@ import java.awt.Point;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Commands;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.InputState;
+import dev.IncanusGames.LineWarsRevamp.Component.CommandList;
 import dev.IncanusGames.LineWarsRevamp.Component.Input;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Collision.OvalHitbox;
@@ -14,6 +16,7 @@ public class InputSystem implements SubSystem{
 	private List<Integer> l;
 	private static Game game;
 	
+	
 	public InputSystem(Game g) {
 		this.game = g;
 	}
@@ -22,13 +25,16 @@ public class InputSystem implements SubSystem{
 		l = game.entityManager.getAllEntititiesWithComponentType(Input.class);
 		for (Integer entity : l ) {
 			switch(game.entityManager.getComponent(entity, Input.class).getInputType()){
-			case UI: {
-				switch(game.entityManager.getComponent(entity, Input.class).getInputState())
-				{
+			
+			
+			case UI: {	
+				switch(game.entityManager.getComponent(entity, Input.class).getInputState()){
+				
 				case NULL: { if(game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 						new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 						game.entityManager.getComponent(entity, Input.class).setInputState(InputState.CLICKED);
-				}break;
+				}
+				
 				}
 				case CLICKED: {
 					if(!game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
@@ -38,13 +44,14 @@ public class InputSystem implements SubSystem{
 					break;
 				}
 				case SELECTED:{
-					System.out.println(entity + " Is Selected");
+					game.entityManager.getComponent(entity, CommandList.class).getL().add(Commands.ACTIVATE);
 					game.entityManager.getComponent(entity, Input.class).setInputState(InputState.NULL);
 				}
 				break;
 				}
 				break;
 			}
+			
 			case UNIT:{
 				switch(game.entityManager.getComponent(entity, Input.class).getInputState())
 				{
@@ -52,21 +59,22 @@ public class InputSystem implements SubSystem{
 					if(game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.CLICKED);
-					}
-					
+					}break;
 				}
 				case CLICKED: {
 					if(!game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.SELECTED);
-					}
+					}break;
 				}
 				case SELECTED:{
 					
-				}
-				}
-				break;
+				}break;
+				
+				}break;
 			}
+			
+			
 			case BUTTON:{
 				switch(game.entityManager.getComponent(entity, Input.class).getInputState())
 				{
@@ -74,21 +82,23 @@ public class InputSystem implements SubSystem{
 					if(game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.CLICKED);
-					}
+					}break;
 					
 				}
 				case CLICKED: {
 					if(!game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.SELECTED);
-					}
+					}break;
 				}
 				case SELECTED:{
 					
-				}
-				}
-				break;
+				}break;
+				
+				}break;
 			}
+			
+			
 			case TOOLTIP:{
 				switch(game.entityManager.getComponent(entity, Input.class).getInputState())
 				{
@@ -96,20 +106,22 @@ public class InputSystem implements SubSystem{
 					if(game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.CLICKED);
-					}
+					}break;
 				}
 				case CLICKED: {
 					if(!game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.SELECTED);
-					}
+					}break;
 				}
 				case SELECTED:{
 					
-				}
-				}
-				break;
+				}break;
+				
+				}break;
 			}
+			
+			
 			case BUILDING:{
 				switch(game.entityManager.getComponent(entity, Input.class).getInputState())
 				{
@@ -131,6 +143,8 @@ public class InputSystem implements SubSystem{
 				}
 				break;
 			}
+			
+			
 			default:
 				System.out.println("Entity has no INPUT component");
 				break;
