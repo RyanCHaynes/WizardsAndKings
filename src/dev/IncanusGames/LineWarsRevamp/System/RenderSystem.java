@@ -19,7 +19,6 @@ import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 //Render every element with the -Render- Component
 public class RenderSystem implements SubSystem{
 	private List<Integer> l;
-	private Graphics g;
 	private Game game;
 	
 	public RenderSystem(Game g) {

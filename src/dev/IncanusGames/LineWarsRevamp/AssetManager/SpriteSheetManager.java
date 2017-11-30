@@ -43,16 +43,49 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(168/6,18,"Wolf_Attack",6,1));
 	}
 	private static void initBackgroud_Beta() {
-		SpriteSheets.add(new SpriteSheet(132/3,34,"Sun_Normal",3,4));
-		SpriteSheets.add(new SpriteSheet(310/1,106,"Sky_DayTime",1,5));
+		
+		
+		
+		//Foreground
 		SpriteSheets.add(new SpriteSheet(455/1,105,"ForeGround_DayTime",1,3));
 		SpriteSheets.add(new SpriteSheet(159/3,32,"LavaTop_DayTime",3,4));
-		SpriteSheets.add(new SpriteSheet(51/1,78,"Lava_DayTime",1,4));
+		SpriteSheets.add(new SpriteSheet(51,78,"Lava_DayTime",1,4));
+		
+		
+		
+		
+		//Background
+		SpriteSheets.add(new SpriteSheet(84, 52, "moon", 1, 1));
+		SpriteSheets.add(new SpriteSheet(132/3, 34, "Sun_Normal", 3, 3));
+		
+		SpriteSheets.add(new SpriteSheet(122, 33, "cloud morning 1", 1, 1));
+		SpriteSheets.add(new SpriteSheet(89, 34, "cloud morning 2", 1, 1));
+		SpriteSheets.add(new SpriteSheet(128, 40, "cloud morning 3", 1, 1));
+		
+		SpriteSheets.add(new SpriteSheet(122, 33, "cloud night 1", 1, 1));
+		SpriteSheets.add(new SpriteSheet(95, 34, "cloud night 2", 1, 1));
+		SpriteSheets.add(new SpriteSheet(128, 40, "cloud night 3", 1, 1));
+		
+		SpriteSheets.add(new SpriteSheet(122, 33, "cloud day 1", 1, 1));
+		SpriteSheets.add(new SpriteSheet(95, 34, "cloud day 2", 1, 1));
+		SpriteSheets.add(new SpriteSheet(128, 40, "cloud day 3", 1, 1));
+		
+		SpriteSheets.add(new SpriteSheet(612, 161, "sky morning", 1, 3));
+		SpriteSheets.add(new SpriteSheet(612, 161, "sky night", 1, 3));
+		SpriteSheets.add(new SpriteSheet(612, 161, "sky normal", 1, 2));
+		
+		SpriteSheets.add(new SpriteSheet(250/10, 16, "BirdProp", 10, 1));
 	}
 	private static void initUI_Beta() {
-		SpriteSheets.add(new SpriteSheet(32/1,32,"FillerUI_Unpressed",1,2));
-		SpriteSheets.add(new SpriteSheet(32/1,32,"FillerUI_Pressed",1,1));
+		SpriteSheets.add(new SpriteSheet(225, 30, "TimeBar", 1, 1));
+		SpriteSheets.add(new SpriteSheet(136/8, 15, "GoldCoin", 8, 1));
 	}
+	
+	
+	
+	
+	
+	
 	
 	private static void loadSpriteSheets() //uploading all graphical assets into the arrayList
 	{

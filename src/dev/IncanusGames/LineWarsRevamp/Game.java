@@ -30,7 +30,6 @@ public class Game implements Runnable{
 		public EntityManager entityManager = new EntityManager();
 		public AnimationDataManager ADH;
 		public EntityAssembler EA = new EntityAssembler(this);
-		
 	
 		
 		private static int baseFPS = 60;

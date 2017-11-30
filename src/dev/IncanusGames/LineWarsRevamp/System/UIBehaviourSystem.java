@@ -14,7 +14,6 @@ import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
 //Render every element with the -Render- Component
 public class UIBehaviourSystem implements SubSystem{
 	private List<Integer> l;
-	private Graphics g;
 	private Game game;
 	
 	public UIBehaviourSystem(Game g) {

@@ -66,19 +66,72 @@ public class AnimationDataManager {
 		AnimationData.put("Sun",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("Sun").put(ObjectStates.PROP_NULL, new AnimationDataSheet());
 		AnimationData.get("Sun").get(ObjectStates.PROP_NULL).setData(3, 41, 32, 20, "Sun_Normal", true, 0);
-		AnimationData.put("Sky",  new HashMap<ObjectStates, AnimationDataSheet>());
-		AnimationData.get("Sky").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
-		AnimationData.get("Sky").get(ObjectStates.PROP_DAY).setData(1, 41, 32, 20, "Sky_DayTime", true, 0);
 		AnimationData.put("Foreground",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("Foreground").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
 		AnimationData.get("Foreground").get(ObjectStates.PROP_DAY).setData(1, 41, 32, 20, "ForeGround_DayTime", true, 0);
 		AnimationData.put("LavaTop",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("LavaTop").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
 		AnimationData.get("LavaTop").get(ObjectStates.PROP_DAY).setData(3, 41, 32, 20, "LavaTop_DayTime", true, 0);
+		
 		AnimationData.put("Lava",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("Lava").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
-		AnimationData.get("Lava").get(ObjectStates.PROP_DAY).setData(1, 41, 32, 20, "Lava_DayTime", true, 0);
+		AnimationData.get("Lava").get(ObjectStates.PROP_DAY).setData(1, 51, 78, 20, "Lava_DayTime", true, 0);
+		
+		// Frames Xwidth Ywidth FPS AnimationName Loop loopFrame
+		AnimationData.put("Moon",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Moon").put(ObjectStates.PROP_NIGHT, new AnimationDataSheet());
+		AnimationData.get("Moon").get(ObjectStates.PROP_NIGHT).setData(1, 84, 52, 20, "moon", true, 0);
+		
+		AnimationData.put("Cloud1",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Cloud1").put(ObjectStates.PROP_EVENING, new AnimationDataSheet());
+		AnimationData.get("Cloud1").get(ObjectStates.PROP_EVENING).setData(1, 122, 33, 20, "cloud morning 1", true, 0);
+		AnimationData.put("Cloud2",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Cloud2").put(ObjectStates.PROP_EVENING, new AnimationDataSheet());
+		AnimationData.get("Cloud2").get(ObjectStates.PROP_EVENING).setData(1, 89, 34, 20, "cloud morning 2", true, 0);
+		AnimationData.put("Cloud3",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Cloud3").put(ObjectStates.PROP_EVENING, new AnimationDataSheet());
+		AnimationData.get("Cloud3").get(ObjectStates.PROP_EVENING).setData(1, 128, 40, 20, "cloud morning 3", true, 0);
+		
+		AnimationData.get("Cloud1").put(ObjectStates.PROP_NIGHT, new AnimationDataSheet());
+		AnimationData.get("Cloud1").get(ObjectStates.PROP_NIGHT).setData(1, 122, 33, 20, "cloud night 1", true, 0);
+		AnimationData.get("Cloud2").put(ObjectStates.PROP_NIGHT, new AnimationDataSheet());
+		AnimationData.get("Cloud2").get(ObjectStates.PROP_NIGHT).setData(1, 95, 34, 20, "cloud night 2", true, 0);
+		AnimationData.get("Cloud3").put(ObjectStates.PROP_NIGHT, new AnimationDataSheet());
+		AnimationData.get("Cloud3").get(ObjectStates.PROP_NIGHT).setData(1, 128, 40, 20, "cloud night 3", true, 0);
+		
+		AnimationData.get("Cloud1").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("Cloud1").get(ObjectStates.PROP_DAY).setData(1, 122, 33, 20, "cloud day 1", true, 0);
+		AnimationData.get("Cloud2").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("Cloud2").get(ObjectStates.PROP_DAY).setData(1, 95, 34, 20, "cloud day 2", true, 0);
+		AnimationData.get("Cloud3").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("Cloud3").get(ObjectStates.PROP_DAY).setData(1, 128, 40, 20, "cloud day 3", true, 0);
+		
+		AnimationData.put("Sky",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Sky").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("Sky").get(ObjectStates.PROP_DAY).setData(1, 612, 161, 20, "sky morning", true, 0);
+		AnimationData.get("Sky").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("Sky").get(ObjectStates.PROP_DAY).setData(1, 612, 161, 20, "sky night", true, 0);
+		AnimationData.get("Sky").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("Sky").get(ObjectStates.PROP_DAY).setData(1, 612, 161, 20, "sky normal", true, 0);
+		
+		AnimationData.put("BirdProp",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("BirdProp").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
+		AnimationData.get("BirdProp").get(ObjectStates.PROP_DAY).setData(10, 250/10, 16, 20, "BirdProp", true, 0);
+		
+		
+		
+		
+		
+		
 		//UI
+		AnimationData.put("TimeBar",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("TimeBar").put(ObjectStates.PROP_NULL, new AnimationDataSheet());
+		AnimationData.get("TimeBar").get(ObjectStates.PROP_NULL).setData(1, 225, 16, 20, "TimeBar", true, 0);
+		
+		AnimationData.put("GoldCoin",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("GoldCoin").put(ObjectStates.PROP_NULL, new AnimationDataSheet());
+		AnimationData.get("GoldCoin").get(ObjectStates.PROP_NULL).setData(1, 136/8, 15, 20, "GoldCoin", true, 0);
+		
 		AnimationData.put("FillerUI",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("FillerUI").put(ObjectStates.UI_NULL, new AnimationDataSheet());
 		AnimationData.get("FillerUI").get(ObjectStates.UI_NULL).setData(1, 41, 32, 20, "FillerUI_Unpressed", true, 0);

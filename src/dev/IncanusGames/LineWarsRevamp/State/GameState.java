@@ -1,10 +1,10 @@
 package dev.IncanusGames.LineWarsRevamp.State;
 
 import java.awt.Graphics;
+import java.sql.Time;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
-import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.UIBehaviours;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.System.AnimationSystem;
 import dev.IncanusGames.LineWarsRevamp.System.CollidableSystem;
@@ -14,7 +14,6 @@ import dev.IncanusGames.LineWarsRevamp.System.PositionSystem;
 import dev.IncanusGames.LineWarsRevamp.System.RenderSystem;
 
 public class GameState extends State{
-	private int Foreground,Sky, Lava,Sun,LavaTop, GoodCastle, EvilCastle, fillerUI;
 	private static Position SpawnA = new Position(0, 370);
 	private static Position SpawnB = new Position(1315, 370);
 	private RenderSystem R;
@@ -23,7 +22,7 @@ public class GameState extends State{
 	private PositionSystem Psys;
 	private AnimationSystem Asys;
 	private InputSystem InptSys;
-	
+	private double time = System.nanoTime();
 	
 	public GameState(Game game) {
 		super(game);
@@ -42,6 +41,8 @@ public class GameState extends State{
 
 	@Override
 	public void tick(double deltaTimeUpdate) {
+		time += deltaTimeUpdate;
+		
 		M.Update(deltaTimeUpdate);
 		InptSys.Update(deltaTimeUpdate);
 		ColideSys.Update();
@@ -73,6 +74,6 @@ public class GameState extends State{
 	}
 	
 	private void MakeUI() {
-		game.EA.createRectangleUI(550, 600, 64, 64, "FillerUI", UIBehaviours.SPAWN_0);
+		//game.EA.createRectangleUI(550, 600, 64, 64, "FillerUI", UIBehaviours.SPAWN_0);
 	}
 }
