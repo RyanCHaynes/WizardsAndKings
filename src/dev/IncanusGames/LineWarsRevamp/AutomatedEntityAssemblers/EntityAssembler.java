@@ -1,6 +1,9 @@
 package dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.AnimationDataManager;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.UnitStatsManager;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.InputType;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.UIBehaviours;
@@ -45,4 +48,18 @@ public class EntityAssembler extends Assembler{
 		E.addComponent(entity, new Animation());
 	}
 	
+	public void createUnit(int x, int y, Factions f, int classType) {
+		int entity = E.createEntity();
+		E.addComponent(entity, new Position(x,y));
+		E.addComponent(entity, new Renderable());
+		E.addComponent(entity, new Animation());
+		E.addComponent(entity, new Input(InputType.UNIT));
+		E.addComponent(entity, new ClassType(UnitStatsManager.StatsData.get(f).get(classType).getClassType()));
+		E.addComponent(entity, new RectangleHitbox(AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(classType).getClassType()).get(ObjectStates.UNIT_IDLE).getxWidth(), 
+				AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(classType).getClassType()).get(ObjectStates.UNIT_IDLE).getyWidth()));
+		E.addComponent(entity, new CommandList());
+		E.addComponent(entity, new ObjectState(ObjectStates.UNIT_IDLE));
+	}
+	
 }
+ 

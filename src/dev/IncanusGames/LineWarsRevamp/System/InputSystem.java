@@ -31,16 +31,21 @@ public class InputSystem implements SubSystem{
 				switch(game.entityManager.getComponent(entity, Input.class).getInputState()){
 				
 				case NULL: { if(game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
-						new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
+						new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position))
+				{
 						game.entityManager.getComponent(entity, Input.class).setInputState(InputState.CLICKED);
-				}
-				
-				}
+						game.entityManager.getComponent(entity, CommandList.class).getL().add(Commands.DISPLAY);
+				}}break;
 				case CLICKED: {
-					if(!game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
+					if (!inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
+							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)) {
+						game.entityManager.getComponent(entity, Input.class).setInputState(InputState.NULL);
+						game.entityManager.getComponent(entity, CommandList.class).getL().add(Commands.STOP);
+					}
+				else if(!game.mouseManager.pressed && inBoundsRect(game.entityManager.getComponent(entity, RectangleHitbox.class), 
 							new Point((int)game.entityManager.getComponent(entity, Position.class).getX(), (int)game.getEntityManager().getComponent(entity, Position.class).getY()), game.mouseManager.position)){
 							game.entityManager.getComponent(entity, Input.class).setInputState(InputState.SELECTED);
-					} else game.entityManager.getComponent(entity, Input.class).setInputState(InputState.NULL);
+					} 
 					break;
 				}
 				case SELECTED:{

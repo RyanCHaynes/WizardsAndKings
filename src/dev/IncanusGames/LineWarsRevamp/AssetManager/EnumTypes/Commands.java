@@ -1,7 +1,7 @@
 package dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes;
 
 public enum Commands {
-	NULL,                 //ALL
+	DISPLAY,
 	ACTIVATE, DEACTIVATE, //UI
 	ATTACK, MOVE, STOP	  //Util
 }

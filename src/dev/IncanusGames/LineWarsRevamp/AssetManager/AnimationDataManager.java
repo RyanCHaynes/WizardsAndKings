@@ -31,7 +31,7 @@ public class AnimationDataManager {
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_MOVE, new AnimationDataSheet());
 		AnimationData.get("footKnight").get(ObjectStates.UNIT_MOVE).setData(10, 41, 32, 20, "footKnight_Move", true, 0);
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_IDLE, new AnimationDataSheet());
-		AnimationData.get("footKnight").get(ObjectStates.UNIT_IDLE).setData(10, 41, 32, 20, "footKnight_Stand", true, 0);
+		AnimationData.get("footKnight").get(ObjectStates.UNIT_IDLE).setData(4, 128/4, 23, 20, "footKnight_Stand", true, 0);
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_ATTACK, new AnimationDataSheet());
 		AnimationData.get("footKnight").get(ObjectStates.UNIT_ATTACK).setData(10, 41, 32, 20, "footKnight_Attack", true, 0);
 		//Good Buildings<Class Init>
@@ -130,13 +130,14 @@ public class AnimationDataManager {
 		
 		AnimationData.put("GoldCoin",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("GoldCoin").put(ObjectStates.PROP_NULL, new AnimationDataSheet());
-		AnimationData.get("GoldCoin").get(ObjectStates.PROP_NULL).setData(1, 136/8, 15, 20, "GoldCoin", true, 0);
+		AnimationData.get("GoldCoin").get(ObjectStates.PROP_NULL).setData(8, 136/8, 15, 10, "GoldCoin", true, 0);
 		
 		AnimationData.put("FillerUI",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("FillerUI").put(ObjectStates.UI_NULL, new AnimationDataSheet());
 		AnimationData.get("FillerUI").get(ObjectStates.UI_NULL).setData(1, 41, 32, 20, "FillerUI_Unpressed", true, 0);
 		AnimationData.get("FillerUI").put(ObjectStates.UI_PRESSED, new AnimationDataSheet());
 		AnimationData.get("FillerUI").get(ObjectStates.UI_PRESSED).setData(1, 41, 32, 20, "FillerUI_Pressed", true, 0);
-
+		AnimationData.get("FillerUI").put(ObjectStates.UI_DISPLAY, new AnimationDataSheet());
+		AnimationData.get("FillerUI").get(ObjectStates.UI_DISPLAY).setData(1, 41, 32, 20, "FillerUI_Pressed", true, 0);
 	}
 }

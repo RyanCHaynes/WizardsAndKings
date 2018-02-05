@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 
 import dev.IncanusGames.LineWarsRevamp.AssetManager.AnimationDataManager;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.SpriteSheetManager;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.UnitStatsManager;
 import dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers.EntityAssembler;
 import dev.IncanusGames.LineWarsRevamp.Display.Display;
 import dev.IncanusGames.LineWarsRevamp.EntityManager.EntityManager;
@@ -30,6 +31,7 @@ public class Game implements Runnable{
 		public EntityManager entityManager = new EntityManager();
 		public AnimationDataManager ADH;
 		public EntityAssembler EA = new EntityAssembler(this);
+		public UnitStatsManager USM;
 	
 		
 		private static int baseFPS = 60;
@@ -45,6 +47,7 @@ public class Game implements Runnable{
 			if(State.getState() != null)
 				State.getState().tick(deltaTimeUpdate);
 		}
+		
 		private void render(double deltaTimeRender){
 			bs = display.getCanvas().getBufferStrategy();
 			if (bs  == null){
@@ -65,7 +68,8 @@ public class Game implements Runnable{
 		private void init(){
 			SpriteSheetManager.init();
 			AnimationDataManager.init();
-			display = new Display(title, width, height);
+			UnitStatsManager.init();
+			display = new Display(title, width, height, this);
 			GameState = new GameState(this);
 			display.getFrame().addKeyListener(keyManager = new KeyManager());
 			display.getCanvas().addMouseListener(mouseManager = new MouseManager());

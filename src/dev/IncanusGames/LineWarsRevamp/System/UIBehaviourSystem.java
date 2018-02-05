@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.HumanUnits;
+import dev.IncanusGames.LineWarsRevamp.State.GameState;
 import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
 
 //Problems
@@ -20,12 +23,14 @@ public class UIBehaviourSystem implements SubSystem{
 		this.game = g;
 	}
 	
-	public void Update(Graphics g, double DeltaTimeUpdate) {
+	public void Update(double DeltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(UIBehaviour.class);
 		for(Integer entity : l) {
 			if(game.entityManager.getComponent(entity, UIBehaviour.class).isTriggered()) {
 				switch(game.entityManager.getComponent(entity, UIBehaviour.class).getBehaviour()) {
 				case SPAWN_0:
+					game.EA.createUnit((int)GameState.SpawnA.getX(), (int)GameState.SpawnA.getY(), Factions.HUMAN, HumanUnits.FOOT_KNIGHT.ordinal());
+					game.entityManager.getComponent(entity, UIBehaviour.class).setTriggered(false);
 					break;
 				case SPAWN_1:
 					break;

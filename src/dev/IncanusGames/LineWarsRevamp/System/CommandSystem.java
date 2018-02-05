@@ -36,8 +36,6 @@ public class CommandSystem implements SubSystem{
 						break;
 					case MOVE:
 						break;
-					case NULL:
-						break;
 					case STOP:
 						break;
 					default:
@@ -56,8 +54,6 @@ public class CommandSystem implements SubSystem{
 					case DEACTIVATE:
 						break;
 					case MOVE:
-						break;
-					case NULL:
 						break;
 					case STOP:
 						break;
@@ -78,8 +74,6 @@ public class CommandSystem implements SubSystem{
 						break;
 					case MOVE:
 						break;
-					case NULL:
-						break;
 					case STOP:
 						break;
 					default:
@@ -99,8 +93,6 @@ public class CommandSystem implements SubSystem{
 						break;
 					case MOVE:
 						break;
-					case NULL:
-						break;
 					case STOP:
 						break;
 					default:
@@ -115,12 +107,19 @@ public class CommandSystem implements SubSystem{
 					case ACTIVATE:{
 						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
 						case UI_ACTIVE:{
+							//do whatever it does on activation
+							game.getEntityManager().getComponent(entity, UIBehaviour.class).setTriggered(false);
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UI_NULL);
 						}
 							break;
-						case UI_NULL:{ //if it is a UI indicating a passive behavior this is the state of non-activation
-							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UI_ACTIVE);
+						case UI_DISPLAY:{
+							game.getEntityManager().getComponent(entity, UIBehaviour.class).setTriggered(true);
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UI_NULL);
 						}
+						case UI_NULL:{ //if it is a UI indicating a passive behavior this is the state of non-activation
+							game.getEntityManager().getComponent(entity, UIBehaviour.class).setTriggered(true);
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UI_NULL);
+						} 
 							break;
 							
 						case UI_OFFCOOLDOWN:{ //UI with active behavior that is available
@@ -133,7 +132,7 @@ public class CommandSystem implements SubSystem{
 						}
 							break;
 						case UI_PRESSED:{
-							//dosen't matter
+							//Display Pressed info
 						}
 							break;
 						default:
@@ -148,14 +147,13 @@ public class CommandSystem implements SubSystem{
 						
 					}
 						break;
-						
-					case NULL:{
-						
+					case DISPLAY:{
+						game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UI_DISPLAY);
 					}
 						break;
 						
 					case STOP:{
-						
+						game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UI_NULL);
 					}
 						break;
 						
@@ -173,8 +171,8 @@ public class CommandSystem implements SubSystem{
 					break; 
 				
 				}
-				game.getEntityManager().getComponent(entity, CommandList.class).getL().removeFirst();
 			}
+			game.getEntityManager().getComponent(entity, CommandList.class).getL().clear();
 		}
 	}
 }

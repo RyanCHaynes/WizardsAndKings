@@ -79,6 +79,8 @@ public class SpriteSheetManager {
 	private static void initUI_Beta() {
 		SpriteSheets.add(new SpriteSheet(225, 30, "TimeBar", 1, 1));
 		SpriteSheets.add(new SpriteSheet(136/8, 15, "GoldCoin", 8, 1));
+		SpriteSheets.add(new SpriteSheet(32, 32, "FillerUI_Pressed",1,1));
+		SpriteSheets.add(new SpriteSheet(32, 32, "FillerUI_Unpressed",1,1));
 	}
 	
 	
