@@ -28,9 +28,9 @@ public class MovementSystem implements SubSystem{
 		for (Integer entity : l ) {
 			if(game.entityManager.getComponent(entity, ObjectState.class).getState() == ObjectStates.UNIT_MOVE) {
 				game.entityManager.getComponent(entity, Position.class).setX(
-				game.entityManager.getComponent(entity, Position.class).getX() + 
+				(float)(game.entityManager.getComponent(entity, Position.class).getX() + 
 				(game.entityManager.getComponent(entity, Movement.class).getFacing()*
-				game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getSPEED()));
+				game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getSPEED())));
 			}
 		}
 	}

@@ -11,7 +11,6 @@ import dev.IncanusGames.LineWarsRevamp.System.CollidableSystem;
 import dev.IncanusGames.LineWarsRevamp.System.CommandSystem;
 import dev.IncanusGames.LineWarsRevamp.System.InputSystem;
 import dev.IncanusGames.LineWarsRevamp.System.MovementSystem;
-import dev.IncanusGames.LineWarsRevamp.System.PositionSystem;
 import dev.IncanusGames.LineWarsRevamp.System.RenderSystem;
 import dev.IncanusGames.LineWarsRevamp.System.UIBehaviourSystem;
 
@@ -21,7 +20,6 @@ public class GameState extends State{
 	private RenderSystem R;
 	private MovementSystem M;
 	private CollidableSystem ColideSys;
-	private PositionSystem Psys;
 	private AnimationSystem Asys;
 	private InputSystem InptSys;
 	private CommandSystem CmdSys;

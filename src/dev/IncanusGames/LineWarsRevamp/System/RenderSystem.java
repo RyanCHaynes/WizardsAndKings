@@ -6,6 +6,7 @@ import java.util.List;
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.SpriteSheetManager;
 import dev.IncanusGames.LineWarsRevamp.Component.ClassType;
+import dev.IncanusGames.LineWarsRevamp.Component.Movement;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
@@ -28,11 +29,30 @@ public class RenderSystem implements SubSystem{
 	public void Update(Graphics g, double DeltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(Renderable.class);
 		for(Integer entity : l) {
-			g.drawImage(SpriteSheetManager.AnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
-					.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
-					(int)game.entityManager.getComponent(entity, Position.class).getX(), 
-					(int)game.entityManager.getComponent(entity, Position.class).getY(),
-					null);
+			if(game.entityManager.hasComponentType(entity, Movement.class)) {
+				if(game.entityManager.getComponent(entity, Movement.class).getFacing() == 1) {
+					g.drawImage(SpriteSheetManager.AnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+							.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
+							(int)game.entityManager.getComponent(entity, Position.class).getX(), 
+							(int)game.entityManager.getComponent(entity, Position.class).getY(),
+							null);
+				} else if (game.entityManager.getComponent(entity, Movement.class).getFacing() == -1) {
+					g.drawImage(SpriteSheetManager.AntiAnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+							.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
+							(int)game.entityManager.getComponent(entity, Position.class).getX(), 
+							(int)game.entityManager.getComponent(entity, Position.class).getY(),
+							null);
+				}
+			
+			}
+			else {
+				g.drawImage(SpriteSheetManager.AnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+						.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
+						(int)game.entityManager.getComponent(entity, Position.class).getX(), 
+						(int)game.entityManager.getComponent(entity, Position.class).getY(),
+						null);
+			}
+			
 		}
 	}
 }

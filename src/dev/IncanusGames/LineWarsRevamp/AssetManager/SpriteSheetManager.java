@@ -2,6 +2,8 @@ package dev.IncanusGames.LineWarsRevamp.AssetManager;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import java.util.HashMap;
 public class SpriteSheetManager {
 	private static ArrayList<SpriteSheet> SpriteSheets = new ArrayList<SpriteSheet>();
 	public static HashMap<String, ArrayList<BufferedImage>> AnimationMap = new HashMap<String, ArrayList<BufferedImage>>(); //stores all animation via hashMap, animate objects will refer to this in their render methods by looking up a string and frame
+	public static HashMap<String, ArrayList<BufferedImage>> AntiAnimationMap = new HashMap<String, ArrayList<BufferedImage>>(); //stores left facing images
 	public static void init(){
 		
 		initGood();
@@ -21,6 +24,7 @@ public class SpriteSheetManager {
 		initUI_Beta();
 		loadSpriteSheets();
 		loadAnimationMap();
+		loadAntiAnimationMap();
 	}
 	
 	private static void initGood() {
@@ -116,6 +120,30 @@ public class SpriteSheetManager {
 		}
 	}
 	
+	private static void loadAntiAnimationMap(){
+		Image image;
+		BufferedImage xfer;
+		for(SpriteSheet x: SpriteSheets)
+		{
+			AntiAnimationMap.put(x.getFilepath(), new ArrayList<BufferedImage>()); //Map associates filepath with animation name
+			for (int i = 0; i<x.getFrameCount(); i++)
+			{
+				if(x.getScale() != 1){
+					image = x.frame(i).getScaledInstance(x.xPix(), x.yPix(), 0);
+					xfer = convertToBufferedImage(image);
+					xfer = flipImage(xfer);
+					AntiAnimationMap.get(x.getFilepath()).add(xfer);
+				}else {
+					image = x.frame(i).getScaledInstance(x.xPix(), x.yPix(), 0);
+					xfer = convertToBufferedImage(image);
+					xfer = flipImage(xfer);
+					AntiAnimationMap.get(x.getFilepath()).add(xfer);
+				}
+				System.out.println(i);
+			}
+		}
+	}
+	
 	private static BufferedImage convertToBufferedImage(Image image)
 	{
 	    BufferedImage newImage = new BufferedImage(
@@ -125,5 +153,12 @@ public class SpriteSheetManager {
 	    g.drawImage(image, 0, 0, null);
 	    g.dispose();
 	    return newImage;
+	}
+	
+	private static BufferedImage flipImage(BufferedImage image) {
+		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+		tx.translate(-image.getWidth(null),0);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+		return op.filter(image, null);
 	}
 }

@@ -6,10 +6,10 @@ public class UnitStatSheet {
 
 	private int HP, ARMOR, ATTACK_DAMAGE, COST, SPECIAL_COST;
 	private Factions faction;
-	private float SPEED, RANGE, COOLDOWN;
+	private double SPEED, RANGE, COOLDOWN;
 	private String classType;
 	
-	public void setData(int HP, int ARMOR, float SPEED, float RANGE, int ATTACK_DAMAGE, Factions faction, String classType) {
+	public void setData(int HP, int ARMOR, double SPEED, double RANGE, int ATTACK_DAMAGE, Factions faction, String classType) {
 		this.HP = HP;
 		this.ARMOR = ARMOR;
 		this.SPEED = SPEED;
@@ -18,7 +18,7 @@ public class UnitStatSheet {
 		this.faction = faction;
 		this.classType = classType;
 	}
-	public void setCostData(int cost, int special_cost, float cooldown) {
+	public void setCostData(int cost, int special_cost, double cooldown) {
 		this.COOLDOWN = cooldown;
 		this.COST = cost;
 		this.SPECIAL_COST = special_cost;
@@ -30,7 +30,7 @@ public class UnitStatSheet {
 	public int getSPECIAL_COST() {
 		return SPECIAL_COST;
 	}
-	public float getCOOLDOWN() {
+	public double getCOOLDOWN() {
 		return COOLDOWN;
 	}
 	public int getHP() {
@@ -49,11 +49,11 @@ public class UnitStatSheet {
 		return faction;
 	}
 
-	public float getSPEED() {
+	public double getSPEED() {
 		return SPEED;
 	}
 
-	public float getRANGE() {
+	public double getRANGE() {
 		return RANGE;
 	}
 
