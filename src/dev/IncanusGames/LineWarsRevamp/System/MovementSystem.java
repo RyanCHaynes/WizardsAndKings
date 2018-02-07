@@ -3,9 +3,11 @@ package dev.IncanusGames.LineWarsRevamp.System;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
+import dev.IncanusGames.LineWarsRevamp.Component.Info;
 import dev.IncanusGames.LineWarsRevamp.Component.Movement;
-import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
-import dev.IncanusGames.LineWarsRevamp.Component.Collision.ColisionCenter;
+import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
+import dev.IncanusGames.LineWarsRevamp.Component.Position;
 
 
 //Every entity with a (true)movement has a destination, this formula calculates the destination of entities by normalizing the 
@@ -24,25 +26,12 @@ public class MovementSystem implements SubSystem{
 		float vectorMag, Xnorm, Ynorm;
 		l = game.entityManager.getAllEntititiesWithComponentType(Movement.class);
 		for (Integer entity : l ) {
-			if(game.entityManager.getComponent(entity, Movement.class).isMovement()) {
-				vectorMag = getMag(game.getEntityManager().getComponent(entity, ColisionCenter.class).getX(),
-						game.getEntityManager().getComponent(entity, ColisionCenter.class).getY(),
-						game.getEntityManager().getComponent(entity, Movement.class).getDestX(),
-						game.getEntityManager().getComponent(entity, Movement.class).getDestY());
-				Xnorm = (game.getEntityManager().getComponent(entity, Movement.class).getDestX()-game.getEntityManager().getComponent(entity, ColisionCenter.class).getX())/vectorMag;
-				Ynorm = (game.getEntityManager().getComponent(entity, Movement.class).getDestY()-game.getEntityManager().getComponent(entity, ColisionCenter.class).getY())/vectorMag;
-				game.getEntityManager().getComponent(entity, Movement.class).setXnorm(Xnorm);
-				game.getEntityManager().getComponent(entity, Movement.class).setYnorm(Ynorm);
-				
-				game.getEntityManager().getComponent(entity, Movement.class).setTimeReq
-				(vectorMag/(game.getEntityManager().getComponent(entity, Movement.class).getSpeed()));
-				game.entityManager.getComponent(entity, Movement.class).setMovement(false);
+			if(game.entityManager.getComponent(entity, ObjectState.class).getState() == ObjectStates.UNIT_MOVE) {
+				game.entityManager.getComponent(entity, Position.class).setX(
+				game.entityManager.getComponent(entity, Position.class).getX() + 
+				(game.entityManager.getComponent(entity, Movement.class).getFacing()*
+				game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getSPEED()));
 			}
-			else if(game.entityManager.getComponent(entity, Movement.class).getTimeReq()<= 0) {//estimate the time it should take to get to the point, if exceeding that time stop movement.
-				game.getEntityManager().getComponent(entity, Movement.class).setXnorm(0);
-				game.getEntityManager().getComponent(entity, Movement.class).setYnorm(0);
-			}
-			else game.entityManager.getComponent(entity, Movement.class).setTimeReq(game.entityManager.getComponent(entity, Movement.class).getTimeReq()-1);
 		}
 	}
 	

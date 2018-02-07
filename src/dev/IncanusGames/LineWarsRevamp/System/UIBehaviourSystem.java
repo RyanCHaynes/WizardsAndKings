@@ -1,11 +1,11 @@
 package dev.IncanusGames.LineWarsRevamp.System;
 
-import java.awt.Graphics;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.HumanUnits;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.OrcUnits;
 import dev.IncanusGames.LineWarsRevamp.State.GameState;
 import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
 
@@ -29,10 +29,12 @@ public class UIBehaviourSystem implements SubSystem{
 			if(game.entityManager.getComponent(entity, UIBehaviour.class).isTriggered()) {
 				switch(game.entityManager.getComponent(entity, UIBehaviour.class).getBehaviour()) {
 				case SPAWN_0:
-					game.EA.createUnit((int)GameState.SpawnA.getX(), (int)GameState.SpawnA.getY(), Factions.HUMAN, HumanUnits.FOOT_KNIGHT.ordinal());
+					game.EA.createUnit((int)GameState.SpawnA.getX(), (int)GameState.SpawnA.getY(), Factions.HUMAN, HumanUnits.FOOT_KNIGHT.ordinal(), 1);
 					game.entityManager.getComponent(entity, UIBehaviour.class).setTriggered(false);
 					break;
 				case SPAWN_1:
+					game.EA.createUnit((int)GameState.SpawnB.getX(), (int)GameState.SpawnB.getY(), Factions.ORC, OrcUnits.WOLF.ordinal(), -1);
+					game.entityManager.getComponent(entity, UIBehaviour.class).setTriggered(false);
 					break;
 				case SPAWN_2:
 					break;

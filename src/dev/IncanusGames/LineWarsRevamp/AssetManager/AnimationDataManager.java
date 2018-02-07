@@ -29,7 +29,7 @@ public class AnimationDataManager {
 		
 		//Have to fix these animations before use
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_MOVE, new AnimationDataSheet());
-		AnimationData.get("footKnight").get(ObjectStates.UNIT_MOVE).setData(10, 41, 32, 20, "footKnight_Move", true, 0);
+		AnimationData.get("footKnight").get(ObjectStates.UNIT_MOVE).setData(4, 64/4, 24, 20, "footKnight_Move", true, 0);
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_IDLE, new AnimationDataSheet());
 		AnimationData.get("footKnight").get(ObjectStates.UNIT_IDLE).setData(4, 128/4, 23, 20, "footKnight_Stand", true, 0);
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_ATTACK, new AnimationDataSheet());
@@ -50,13 +50,11 @@ public class AnimationDataManager {
 		//Evil Buildings <Data Init>
 		AnimationData.put("Wolf",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("Wolf").put(ObjectStates.UNIT_MOVE, new AnimationDataSheet());
-		AnimationData.get("Wolf").get(ObjectStates.UNIT_MOVE).setData(10, 41, 32, 20, "Wolf_Move", true, 0);
-		AnimationData.put("Wolf",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Wolf").get(ObjectStates.UNIT_MOVE).setData(7, 224/7, 18, 20, "Wolf_Move", true, 0);
 		AnimationData.get("Wolf").put(ObjectStates.UNIT_IDLE, new AnimationDataSheet());
-		AnimationData.get("Wolf").get(ObjectStates.UNIT_IDLE).setData(10, 41, 32, 20, "Wolf_Stand", true, 0);
-		AnimationData.put("Wolf",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Wolf").get(ObjectStates.UNIT_IDLE).setData(2, 56/2, 18, 20, "Wolf_Stand", true, 0);
 		AnimationData.get("Wolf").put(ObjectStates.UNIT_ATTACK, new AnimationDataSheet());
-		AnimationData.get("Wolf").get(ObjectStates.UNIT_ATTACK).setData(10, 41, 32, 20, "Wolf_Attack", true, 0);
+		AnimationData.get("Wolf").get(ObjectStates.UNIT_ATTACK).setData(6, 168/6, 18, 20, "Wolf_Attack", true, 0);
 		
 		//Objects
 		
@@ -139,5 +137,13 @@ public class AnimationDataManager {
 		AnimationData.get("FillerUI").get(ObjectStates.UI_PRESSED).setData(1, 41, 32, 20, "FillerUI_Pressed", true, 0);
 		AnimationData.get("FillerUI").put(ObjectStates.UI_DISPLAY, new AnimationDataSheet());
 		AnimationData.get("FillerUI").get(ObjectStates.UI_DISPLAY).setData(1, 41, 32, 20, "FillerUI_Pressed", true, 0);
+		
+		AnimationData.put("WolfCard",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("WolfCard").put(ObjectStates.UI_NULL, new AnimationDataSheet());
+		AnimationData.get("WolfCard").get(ObjectStates.UI_NULL).setData(1, 41, 32, 20, "WolfCardUnpressed", true, 0);
+		AnimationData.get("WolfCard").put(ObjectStates.UI_PRESSED, new AnimationDataSheet());
+		AnimationData.get("WolfCard").get(ObjectStates.UI_PRESSED).setData(1, 41, 32, 20, "WolfCardPressed", true, 0);
+		AnimationData.get("WolfCard").put(ObjectStates.UI_DISPLAY, new AnimationDataSheet());
+		AnimationData.get("WolfCard").get(ObjectStates.UI_DISPLAY).setData(1, 41, 32, 20, "WolfCardPressed", true, 0);
 	}
 }

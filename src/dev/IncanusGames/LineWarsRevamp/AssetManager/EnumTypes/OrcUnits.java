@@ -1,5 +1,5 @@
 package dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes;
 
-public enum Factions {
-	HUMAN, ORC
+public enum OrcUnits {
+	WOLF
 }

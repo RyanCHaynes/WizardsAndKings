@@ -81,6 +81,8 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(136/8, 15, "GoldCoin", 8, 1));
 		SpriteSheets.add(new SpriteSheet(32, 32, "FillerUI_Pressed",1,1));
 		SpriteSheets.add(new SpriteSheet(32, 32, "FillerUI_Unpressed",1,1));
+		SpriteSheets.add(new SpriteSheet(32, 32, "WolfCardPressed",1,1));
+		SpriteSheets.add(new SpriteSheet(32, 32, "WolfCardUnpressed",1,1));
 	}
 	
 	

@@ -9,6 +9,7 @@ import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
 import dev.IncanusGames.LineWarsRevamp.Component.CommandList;
 import dev.IncanusGames.LineWarsRevamp.Component.Input;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
+import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
 
 public class CommandSystem implements SubSystem{
@@ -26,17 +27,144 @@ public class CommandSystem implements SubSystem{
 				switch(game.entityManager.getComponent(entity, Input.class).getInputType()){
 				
 				
-				case UNIT:{
+				case UNIT:{ //UNIT_ATTACK, UNIT_DEFEND, UNIT_IDLE, UNIT_DEATH, UNIT_MOVE
 					switch(c){
-					case ACTIVATE:
+					case ACTIVATE:{
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+						}
+							break;
+						case UNIT_MOVE:{
+						}
+						case UNIT_DEFEND:{ 
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+						}
+							break;
+						case UNIT_DEATH:{ 
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
+					}
 						break;
 					case ATTACK:
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+						}
+							break;
+						case UNIT_MOVE:{
+						}
+						case UNIT_DEFEND:{ 
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+						}
+							break;
+						case UNIT_DEATH:{ 
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
 						break;
 					case DEACTIVATE:
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+						}
+							break;
+						case UNIT_MOVE:{
+						}
+						case UNIT_DEFEND:{ 
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+						}
+							break;
+						case UNIT_DEATH:{ 
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
+						break;
+					case DISPLAY:
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_MOVE);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+						}
+							break;
+						case UNIT_MOVE:{
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_IDLE);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+						}
+						case UNIT_DEFEND:{ 
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+						}
+							break;
+						case UNIT_DEATH:{ 
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
 						break;
 					case MOVE:
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+						}
+							break;
+						case UNIT_MOVE:{
+						}
+						case UNIT_DEFEND:{ 
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+						}
+							break;
+						case UNIT_DEATH:{ 
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
 						break;
 					case STOP:
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+						}
+							break;
+						case UNIT_MOVE:{
+						}
+						case UNIT_DEFEND:{ 
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+						}
+							break;
+						case UNIT_DEATH:{ 
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
 						break;
 					default:
 						break;

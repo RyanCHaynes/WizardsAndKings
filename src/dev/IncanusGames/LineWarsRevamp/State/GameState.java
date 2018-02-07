@@ -16,8 +16,8 @@ import dev.IncanusGames.LineWarsRevamp.System.RenderSystem;
 import dev.IncanusGames.LineWarsRevamp.System.UIBehaviourSystem;
 
 public class GameState extends State{
-	public static Position SpawnA = new Position(200, 510);
-	public static Position SpawnB = new Position(1315, 370);
+	public static Position SpawnA = new Position(180, 510);
+	public static Position SpawnB = new Position(1000, 510);
 	private RenderSystem R;
 	private MovementSystem M;
 	private CollidableSystem ColideSys;
@@ -40,7 +40,7 @@ public class GameState extends State{
 		CmdSys = new CommandSystem(game);
 		InptSys = new InputSystem(game);
 		ColideSys = new CollidableSystem(game);
-		Psys = new PositionSystem(game);
+	//	Psys = new PositionSystem(game);
 		Asys= new AnimationSystem(game);
 		UBSys = new UIBehaviourSystem(game);
 	}
@@ -58,7 +58,7 @@ public class GameState extends State{
 		M.Update(deltaTimeUpdate);
 		InptSys.Update(deltaTimeUpdate);
 		ColideSys.Update();
-		Psys.Update(deltaTimeUpdate);
+	//	Psys.Update(deltaTimeUpdate);
 		Asys.Update(deltaTimeUpdate);
 		CmdSys.Update(deltaTimeUpdate);
 		UBSys.Update(deltaTimeUpdate);
@@ -93,6 +93,7 @@ public class GameState extends State{
 	private void MakeUI() {
 		
 		game.EA.createRectangleUI(550, 600, 32, 32, "FillerUI", UIBehaviours.SPAWN_0);
+		game.EA.createRectangleUI(650, 600, 32, 32, "WolfCard", UIBehaviours.SPAWN_1);
 	}
 	
 	public int Gold(int amount) {

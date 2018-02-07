@@ -9,7 +9,9 @@ import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.UIBehaviours;
 import dev.IncanusGames.LineWarsRevamp.Component.ClassType;
 import dev.IncanusGames.LineWarsRevamp.Component.CommandList;
+import dev.IncanusGames.LineWarsRevamp.Component.Info;
 import dev.IncanusGames.LineWarsRevamp.Component.Input;
+import dev.IncanusGames.LineWarsRevamp.Component.Movement;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
@@ -48,17 +50,20 @@ public class EntityAssembler extends Assembler{
 		E.addComponent(entity, new Animation());
 	}
 	
-	public void createUnit(int x, int y, Factions f, int classType) {
+	public void createUnit(int x, int y, Factions f, int unitType, int facing) {
 		int entity = E.createEntity();
 		E.addComponent(entity, new Position(x,y));
 		E.addComponent(entity, new Renderable());
 		E.addComponent(entity, new Animation());
 		E.addComponent(entity, new Input(InputType.UNIT));
-		E.addComponent(entity, new ClassType(UnitStatsManager.StatsData.get(f).get(classType).getClassType()));
-		E.addComponent(entity, new RectangleHitbox(AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(classType).getClassType()).get(ObjectStates.UNIT_IDLE).getxWidth(), 
-				AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(classType).getClassType()).get(ObjectStates.UNIT_IDLE).getyWidth()));
+		E.addComponent(entity, new Movement(facing));
+		E.addComponent(entity, new ClassType(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()));
+		E.addComponent(entity, new RectangleHitbox(AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()).get(ObjectStates.UNIT_IDLE).getxWidth(), 
+				AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()).get(ObjectStates.UNIT_IDLE).getyWidth()));
 		E.addComponent(entity, new CommandList());
 		E.addComponent(entity, new ObjectState(ObjectStates.UNIT_IDLE));
+		E.addComponent(entity, new Info(f, unitType));
+		System.out.println("created " + unitType);
 	}
 	
 }
