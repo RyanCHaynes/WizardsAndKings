@@ -75,10 +75,10 @@ public class GameState extends State{
 	
 	
 	private void MakeBackground() {
-		game.EA.createProp(0, 0, "Sky", ObjectStates.PROP_DAY);
+		game.EA.createProp(0, 0, "Sky", ObjectStates.PROP_NULL);
 		game.EA.createProp(580, 456, "Lava", ObjectStates.PROP_DAY);
 		game.EA.createProp(600, 400, "LavaTop", ObjectStates.PROP_DAY);
-		game.EA.createProp(0, 370, "Foreground", ObjectStates.PROP_DAY);
+		game.EA.createProp(0, 0, "Foreground", ObjectStates.PROP_DAY);
 		game.EA.createProp(1, 4, "Sun", ObjectStates.PROP_NULL);
 		
 		game.EA.createProp(-3, 290, "GoodCastle", ObjectStates.BUILDING_MAXLIFE);

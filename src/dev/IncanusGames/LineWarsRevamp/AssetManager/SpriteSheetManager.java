@@ -51,7 +51,7 @@ public class SpriteSheetManager {
 		
 		
 		//Foreground
-		SpriteSheets.add(new SpriteSheet(455/1,105,"ForeGround_DayTime",1,3));
+		SpriteSheets.add(new SpriteSheet(416,234,"foreground_final",1,3));
 		SpriteSheets.add(new SpriteSheet(159/3,32,"LavaTop_DayTime",3,4));
 		SpriteSheets.add(new SpriteSheet(51,78,"Lava_DayTime",1,4));
 		
@@ -77,6 +77,7 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(612, 161, "sky morning", 1, 3));
 		SpriteSheets.add(new SpriteSheet(612, 161, "sky night", 1, 3));
 		SpriteSheets.add(new SpriteSheet(612, 161, "sky normal", 1, 2));
+		SpriteSheets.add(new SpriteSheet(416, 164, "sky_final", 1, 3));
 		
 		SpriteSheets.add(new SpriteSheet(250/10, 16, "BirdProp", 10, 1));
 	}
