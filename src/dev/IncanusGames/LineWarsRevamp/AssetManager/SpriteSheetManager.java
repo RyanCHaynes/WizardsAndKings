@@ -59,16 +59,16 @@ public class SpriteSheetManager {
 		
 		
 		//Background
-		SpriteSheets.add(new SpriteSheet(84, 52, "moon", 1, 1));
+		SpriteSheets.add(new SpriteSheet(84, 52, "moon", 1, 3));
 		SpriteSheets.add(new SpriteSheet(132/3, 34, "Sun_Normal", 3, 3));
 		
-		SpriteSheets.add(new SpriteSheet(122, 33, "cloud morning 1", 1, 1));
-		SpriteSheets.add(new SpriteSheet(89, 34, "cloud morning 2", 1, 1));
-		SpriteSheets.add(new SpriteSheet(128, 40, "cloud morning 3", 1, 1));
+		SpriteSheets.add(new SpriteSheet(122, 33, "cloud morning 1", 1, 3));
+		SpriteSheets.add(new SpriteSheet(89, 34, "cloud morning 2", 1, 3));
+		SpriteSheets.add(new SpriteSheet(128, 40, "cloud morning 3", 1, 3));
 		
-		SpriteSheets.add(new SpriteSheet(122, 33, "cloud night 1", 1, 1));
-		SpriteSheets.add(new SpriteSheet(95, 34, "cloud night 2", 1, 1));
-		SpriteSheets.add(new SpriteSheet(128, 40, "cloud night 3", 1, 1));
+		SpriteSheets.add(new SpriteSheet(122, 33, "cloud night 1", 1, 3));
+		SpriteSheets.add(new SpriteSheet(95, 34, "cloud night 2", 1, 3));
+		SpriteSheets.add(new SpriteSheet(128, 40, "cloud night 3", 1, 3));
 		
 		SpriteSheets.add(new SpriteSheet(122, 33, "cloud day 1", 1, 1));
 		SpriteSheets.add(new SpriteSheet(95, 34, "cloud day 2", 1, 1));
