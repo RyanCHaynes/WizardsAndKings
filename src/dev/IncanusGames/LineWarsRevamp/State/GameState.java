@@ -3,7 +3,9 @@ package dev.IncanusGames.LineWarsRevamp.State;
 import java.awt.Graphics;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.PropTypes;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.UIBehaviours;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.System.AnimationSystem;
@@ -76,10 +78,10 @@ public class GameState extends State{
 	
 	private void MakeBackground() {
 		game.EA.createProp(0, 0, "Sky", ObjectStates.PROP_NULL);
-		game.EA.createProp(900, 50, "Moon", ObjectStates.PROP_NIGHT);
-		game.EA.createProp(500, 150, "Cloud1", ObjectStates.PROP_EVENING);
-		game.EA.createProp(100, 150, "Cloud2", ObjectStates.PROP_EVENING);
-		game.EA.createProp(900, 50, "Moon", ObjectStates.PROP_NIGHT);
+		game.EA.createProp(930, 40, "Moon", ObjectStates.PROP_NIGHT);
+		game.EA.createMovingProp(500, 120, "Cloud1", 1, Factions.PROPS, PropTypes.CLOUDONE.ordinal(), ObjectStates.PROP_EVENING);
+		game.EA.createMovingProp(900, 120, "Cloud3", -1, Factions.PROPS, PropTypes.CLOUDONE.ordinal(), ObjectStates.PROP_EVENING);
+		game.EA.createMovingProp(100, 120, "Cloud2", 1, Factions.PROPS, PropTypes.CLOUDONE.ordinal(), ObjectStates.PROP_EVENING);
 	//	game.EA.createProp(580, 456, "Lava", ObjectStates.PROP_DAY);
 	//	game.EA.createProp(600, 400, "LavaTop", ObjectStates.PROP_DAY);
 		game.EA.createProp(0, 0, "Foreground", ObjectStates.PROP_DAY);

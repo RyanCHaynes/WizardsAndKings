@@ -50,13 +50,26 @@ public class EntityAssembler extends Assembler{
 		E.addComponent(entity, new Animation());
 	}
 	
+	public void createMovingProp(float posX, float posY, String sprite, int facing,Factions f,  int propType, ObjectStates state) {
+		int entity = E.createEntity();
+		E.addComponent(entity, new Position(posX,posY));
+		E.addComponent(entity, new Renderable());
+		E.addComponent(entity, new ClassType(sprite));
+		E.addComponent(entity, new ObjectState(state));
+		E.addComponent(entity, new Animation());
+		E.addComponent(entity, new Movement(facing, true));
+		E.addComponent(entity, new Info(f, propType));
+	}
+	
+	
+	
 	public void createUnit(int x, int y, Factions f, int unitType, int facing) {
 		int entity = E.createEntity();
 		E.addComponent(entity, new Position(x,y));
 		E.addComponent(entity, new Renderable());
 		E.addComponent(entity, new Animation());
 		E.addComponent(entity, new Input(InputType.UNIT));
-		E.addComponent(entity, new Movement(facing));
+		E.addComponent(entity, new Movement(facing, false));
 		E.addComponent(entity, new ClassType(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()));
 		E.addComponent(entity, new RectangleHitbox(AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()).get(ObjectStates.UNIT_IDLE).getxWidth(), 
 				AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()).get(ObjectStates.UNIT_IDLE).getyWidth()));

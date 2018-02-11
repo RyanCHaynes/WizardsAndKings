@@ -8,6 +8,7 @@ import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Commands;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
 import dev.IncanusGames.LineWarsRevamp.Component.CommandList;
 import dev.IncanusGames.LineWarsRevamp.Component.Input;
+import dev.IncanusGames.LineWarsRevamp.Component.Movement;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
 import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
@@ -100,11 +101,13 @@ public class CommandSystem implements SubSystem{
 						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
 						case UNIT_IDLE:{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_MOVE);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(true);
 							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
 						}
 							break;
 						case UNIT_MOVE:{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_IDLE);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
 							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
 						}
 						case UNIT_DEFEND:{ 

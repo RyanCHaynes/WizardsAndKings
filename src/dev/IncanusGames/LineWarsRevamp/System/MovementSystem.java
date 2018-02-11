@@ -26,7 +26,7 @@ public class MovementSystem implements SubSystem{
 		float vectorMag, Xnorm, Ynorm;
 		l = game.entityManager.getAllEntititiesWithComponentType(Movement.class);
 		for (Integer entity : l ) {
-			if(game.entityManager.getComponent(entity, ObjectState.class).getState() == ObjectStates.UNIT_MOVE) {
+			if(game.entityManager.getComponent(entity, Movement.class).isMoving()) {
 				game.entityManager.getComponent(entity, Position.class).setX(
 				(float)(game.entityManager.getComponent(entity, Position.class).getX() + 
 				(game.entityManager.getComponent(entity, Movement.class).getFacing()*
