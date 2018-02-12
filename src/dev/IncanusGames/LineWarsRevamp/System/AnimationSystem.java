@@ -17,7 +17,7 @@ public class AnimationSystem implements SubSystem{
 		this.game = g;
 	}
 	
-	public void Update(double deltaTime) {
+	public void Update(double deltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(Animation.class);
 		for (Integer entity : l ) {
 			game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(game.entityManager.getComponent(entity, Animation.class).getAnimationTimer()+1);

@@ -7,7 +7,6 @@ public class rangeSensor implements Component{
 	private boolean isSensing;
 	private boolean hasTarget;
 	private int Target;
-
 	private FacingDirections direction;
 	private SensorBehaviours behaviour;
 	
@@ -55,6 +54,14 @@ public class rangeSensor implements Component{
 	}
 	public FacingDirections getDirection() {
 		return direction;
+	}
+	public int getDirectionAsInt() {
+		switch(direction) {
+		case LEFT: return -1;
+		case NUETRAL: return 0;
+		case RIGHT: return 1;
+		default: return 0;
+		}
 	}
 
 

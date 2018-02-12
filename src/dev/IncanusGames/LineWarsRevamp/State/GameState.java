@@ -9,11 +9,14 @@ import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.PropTypes;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.UIBehaviours;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.System.AnimationSystem;
+import dev.IncanusGames.LineWarsRevamp.System.AttackSystem;
 import dev.IncanusGames.LineWarsRevamp.System.CollidableSystem;
 import dev.IncanusGames.LineWarsRevamp.System.CommandSystem;
+import dev.IncanusGames.LineWarsRevamp.System.HealthSystem;
 import dev.IncanusGames.LineWarsRevamp.System.InputSystem;
 import dev.IncanusGames.LineWarsRevamp.System.MovementSystem;
 import dev.IncanusGames.LineWarsRevamp.System.RenderSystem;
+import dev.IncanusGames.LineWarsRevamp.System.SensorSystem;
 import dev.IncanusGames.LineWarsRevamp.System.UIBehaviourSystem;
 
 public class GameState extends State{
@@ -26,6 +29,9 @@ public class GameState extends State{
 	private InputSystem InptSys;
 	private CommandSystem CmdSys;
 	private UIBehaviourSystem UBSys;
+	private AttackSystem AtckSys;
+	private SensorSystem SenSys;
+	private HealthSystem HpSys;
 	private int Gold = 100;
 	private double StateTime = 0;
 	
@@ -36,13 +42,15 @@ public class GameState extends State{
 
 		R = new RenderSystem(game);
 		M = new MovementSystem(game);
-		
-		CmdSys = new CommandSystem(game);
+		HpSys = new HealthSystem(game);
+		UBSys = new UIBehaviourSystem(game);
+		SenSys = new SensorSystem(game);
 		InptSys = new InputSystem(game);
+		CmdSys = new CommandSystem(game);
+		Asys= new AnimationSystem(game);
+		AtckSys = new AttackSystem(game);
 		ColideSys = new CollidableSystem(game);
 	//	Psys = new PositionSystem(game);
-		Asys= new AnimationSystem(game);
-		UBSys = new UIBehaviourSystem(game);
 	}
 
 	@Override
@@ -57,11 +65,14 @@ public class GameState extends State{
 		//SystemsUpdates
 		M.Update(deltaTimeUpdate);
 		InptSys.Update(deltaTimeUpdate);
-		ColideSys.Update();
+		ColideSys.Update(deltaTimeUpdate);
 	//	Psys.Update(deltaTimeUpdate);
+		SenSys.Update(deltaTimeUpdate);
 		Asys.Update(deltaTimeUpdate);
 		CmdSys.Update(deltaTimeUpdate);
 		UBSys.Update(deltaTimeUpdate);
+		AtckSys.Update(deltaTimeUpdate);
+		HpSys.Update(deltaTimeUpdate);
 	}
 
 	@Override

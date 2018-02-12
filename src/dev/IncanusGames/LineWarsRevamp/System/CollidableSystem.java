@@ -15,7 +15,7 @@ public class CollidableSystem implements SubSystem{
 		this.game = g;
 	}
 	
-	public void Update() {
+	public void Update(double deltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(Collidable.class);
 		for (Integer entity : l ) {
 				switch(game.entityManager.getComponent(entity, Collidable.class).getBehavior()) {

@@ -2,28 +2,31 @@ package dev.IncanusGames.LineWarsRevamp.System;
 
 import java.util.List;
 
-
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Commands;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
+import dev.IncanusGames.LineWarsRevamp.Component.Attack;
 import dev.IncanusGames.LineWarsRevamp.Component.CommandList;
 import dev.IncanusGames.LineWarsRevamp.Component.Input;
 import dev.IncanusGames.LineWarsRevamp.Component.Movement;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
+import dev.IncanusGames.LineWarsRevamp.Component.rangeSensor;
 import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
 
 public class CommandSystem implements SubSystem{
 	private List<Integer> l;
+	boolean deleted = false;
 	private static Game game;
 	
 	public CommandSystem(Game g) {
 		this.game = g;
 	}
 	
-	public void Update(double deltaTime) {
+	public synchronized void Update(double deltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(CommandList.class);
 		for (Integer entity : l ) {
+			deleted = false;
 			for(Commands c : game.getEntityManager().getComponent(entity, CommandList.class).getL()){
 				switch(game.entityManager.getComponent(entity, Input.class).getInputType()){
 				
@@ -56,9 +59,19 @@ public class CommandSystem implements SubSystem{
 					case ATTACK:
 						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
 						case UNIT_IDLE:{
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_ATTACK);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(true);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+							System.out.println("Command attack to idle");
 						}
 							break;
 						case UNIT_MOVE:{
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_ATTACK);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(true);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+							System.out.println("Command attack to Moving");
 						}
 						case UNIT_DEFEND:{ 
 						} 
@@ -97,17 +110,23 @@ public class CommandSystem implements SubSystem{
 							break;
 						}
 						break;
+					case DEATH:
+						game.getEntityManager().removeEntity(entity);
+						deleted=true;
+						break;
 					case DISPLAY:
 						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
 						case UNIT_IDLE:{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_MOVE);
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(true);
+							game.getEntityManager().getComponent(entity, rangeSensor.class).setSensing(true);
 							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
 						}
 							break;
 						case UNIT_MOVE:{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_IDLE);
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, rangeSensor.class).setSensing(true);
 							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
 						}
 						case UNIT_DEFEND:{ 
@@ -303,7 +322,7 @@ public class CommandSystem implements SubSystem{
 				
 				}
 			}
-			game.getEntityManager().getComponent(entity, CommandList.class).getL().clear();
+			if(!deleted)game.getEntityManager().getComponent(entity, CommandList.class).getL().clear();
 		}
 	}
 }

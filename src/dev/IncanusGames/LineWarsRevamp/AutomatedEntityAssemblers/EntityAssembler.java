@@ -3,18 +3,23 @@ package dev.IncanusGames.LineWarsRevamp.AutomatedEntityAssemblers;
 import dev.IncanusGames.LineWarsRevamp.Game;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.AnimationDataManager;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.UnitStatsManager;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.FacingDirections;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.InputType;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.ObjectStates;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.SensorBehaviours;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.UIBehaviours;
+import dev.IncanusGames.LineWarsRevamp.Component.Attack;
 import dev.IncanusGames.LineWarsRevamp.Component.ClassType;
 import dev.IncanusGames.LineWarsRevamp.Component.CommandList;
+import dev.IncanusGames.LineWarsRevamp.Component.Health;
 import dev.IncanusGames.LineWarsRevamp.Component.Info;
 import dev.IncanusGames.LineWarsRevamp.Component.Input;
 import dev.IncanusGames.LineWarsRevamp.Component.Movement;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.Renderable;
+import dev.IncanusGames.LineWarsRevamp.Component.rangeSensor;
 import dev.IncanusGames.LineWarsRevamp.Component.Collision.RectangleHitbox;
 import dev.IncanusGames.LineWarsRevamp.Component.GFX.Animation;
 import dev.IncanusGames.LineWarsRevamp.UI.UIBehaviour;
@@ -58,14 +63,15 @@ public class EntityAssembler extends Assembler{
 		E.addComponent(entity, new ObjectState(state));
 		E.addComponent(entity, new Animation());
 		E.addComponent(entity, new Movement(facing, true));
-		E.addComponent(entity, new Info(f, propType));
+		E.addComponent(entity, new Info(f, propType, 0));
 	}
 	
 	
 	
-	public void createUnit(int x, int y, Factions f, int unitType, int facing) {
-		int entity = E.createEntity();
+	public void createUnit(int x, int y, Factions f, int unitType, int facing, FacingDirections facingD, int playerOwner) {
+		int entity = E.createEntityWTeam(playerOwner);
 		E.addComponent(entity, new Position(x,y));
+		E.addComponent(entity, new Health(UnitStatsManager.StatsData.get(f).get(unitType).getHP()));
 		E.addComponent(entity, new Renderable());
 		E.addComponent(entity, new Animation());
 		E.addComponent(entity, new Input(InputType.UNIT));
@@ -75,9 +81,11 @@ public class EntityAssembler extends Assembler{
 				AnimationDataManager.AnimationData.get(UnitStatsManager.StatsData.get(f).get(unitType).getClassType()).get(ObjectStates.UNIT_IDLE).getyWidth()));
 		E.addComponent(entity, new CommandList());
 		E.addComponent(entity, new ObjectState(ObjectStates.UNIT_IDLE));
-		E.addComponent(entity, new Info(f, unitType));
+		E.addComponent(entity, new Info(f, unitType, playerOwner));
+		E.addComponent(entity, new rangeSensor(facingD, SensorBehaviours.SENSE_FOR_ENEMIES_TO_ATTACK ));
+		E.addComponent(entity, new Attack());
 		System.out.println("created " + unitType);
-	}
+	} 
 	
 }
  

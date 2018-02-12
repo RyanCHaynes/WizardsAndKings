@@ -10,24 +10,26 @@ import dev.IncanusGames.LineWarsRevamp.Component.Info;
 import dev.IncanusGames.LineWarsRevamp.Component.Position;
 import dev.IncanusGames.LineWarsRevamp.Component.rangeSensor;
 
-public class SensorSystem {
+public class SensorSystem implements SubSystem{
 	private List<Integer> l;
-	private List<Integer> enemyUnits;
 	private static Game game;
 	
 	public SensorSystem(Game g) {
 		this.game = g;
 	}
 	
-	public void Update(double deltaTime) {
+	public void Update(double deltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(rangeSensor.class);
 		
 		for (Integer entity : l ) {
+			System.out.println(entity);
+			
 			if(game.entityManager.getComponent(entity, rangeSensor.class).isSensing()) {
 				switch(game.entityManager.getComponent(entity, rangeSensor.class).getBehavior()) {
+				
 				case SENSE_FOR_ENEMIES_TO_ATTACK:
-
-					for(Integer unit : enemyUnits) {
+				{
+					for(Integer unit : game.entityManager.getAllEntitiesOnTeam(2)) {
 						if(game.entityManager.getComponent(entity, rangeSensor.class).getDirection() == FacingDirections.RIGHT) {
 							if(game.entityManager.getComponent(entity, Position.class).getX()
 							+ game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getHalfHitboxX()
@@ -36,11 +38,30 @@ public class SensorSystem {
 							game.entityManager.getComponent(unit, Position.class).getX() 
 							+ game.USM.StatsData.get(game.entityManager.getComponent(unit, Info.class).getFaction()).get(game.entityManager.getComponent(unit, Info.class).getUnitType()).getHalfHitboxX()
 							) {
+								
 								game.entityManager.getComponent(entity, CommandList.class).getL().add(Commands.ATTACK);
+								game.entityManager.getComponent(entity, rangeSensor.class).setTarget(unit);
+								game.entityManager.getComponent(entity, rangeSensor.class).setSensing(false);
 							}
 						}
 					}
-				
+					
+					for(Integer unit : game.entityManager.getAllEntitiesOnTeam(1)) {
+						if(game.entityManager.getComponent(entity, rangeSensor.class).getDirection() == FacingDirections.LEFT) {
+							if(game.entityManager.getComponent(entity, Position.class).getX()
+							+ game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getHalfHitboxX()
+							- game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getRANGE() <
+							
+							game.entityManager.getComponent(unit, Position.class).getX() 
+							+ game.USM.StatsData.get(game.entityManager.getComponent(unit, Info.class).getFaction()).get(game.entityManager.getComponent(unit, Info.class).getUnitType()).getHalfHitboxX()
+							) {
+								game.entityManager.getComponent(entity, CommandList.class).getL().add(Commands.ATTACK);
+								game.entityManager.getComponent(entity, rangeSensor.class).setTarget(unit);
+								game.entityManager.getComponent(entity, rangeSensor.class).setSensing(false);
+							}
+						}
+					}
+				}
 					break;
 				default:
 					break;

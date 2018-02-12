@@ -11,12 +11,16 @@ import dev.IncanusGames.LineWarsRevamp.Component.Component;
 public final class EntityManager {
 	private static int lowestUnassignedEntityID=1;
 	public  List<Integer> Entities; //List of entities 
+	public List<Integer> Player1; //List of player1 entities;
+	public List<Integer> Player2; //List of player2 entiteies;
 	private HashMap<Integer, LinkedList<Component>> EntityComponentMap; //Which components are in which entities
 	public  HashMap<Class<?>, HashMap<Integer, ? extends Component>> componentStores;  // Component Type matched w/ HashMap of Entity to - instantiated component	
 	
 
 	public EntityManager(){
 		Entities = new LinkedList<Integer>();
+		Player1 = new LinkedList<Integer>();
+		Player2 = new LinkedList<Integer>();
 		componentStores = new HashMap<Class<?>, HashMap<Integer, ? extends Component>>();
 		EntityComponentMap = new HashMap<Integer, LinkedList<Component>>();
 	}
@@ -28,7 +32,12 @@ public final class EntityManager {
 		return false;
 	}
 	
-	public <T extends Component> List<Integer> getAllEntititiesWithComponentType(Class<T> componentType){
+	public List<Integer> getAllEntitiesOnTeam(int team){
+		if(team == 1) return Player1;
+		else return Player2;
+	}
+	
+	public synchronized <T extends Component> List<Integer> getAllEntititiesWithComponentType(Class<T> componentType){
 		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
 		if (store == null){
 			return new LinkedList<Integer>();
@@ -37,7 +46,8 @@ public final class EntityManager {
 			List<Integer> result = new ArrayList<Integer>((java.util.Collection<Integer>)store.keySet());
 			return result;}
 	}
-	public void removeEntity(int entityID) {
+	
+	public synchronized void removeEntity(int entityID) {
 		//System.out.println(EntityComponentMap.get(entityID).size());
 		for (Component Ca : EntityComponentMap.get(entityID)) { //for every component type the entity has remove it from the ComponentStores
 			componentStores.get(Ca.getClass()).remove(entityID);
@@ -47,9 +57,13 @@ public final class EntityManager {
 		System.out.println(EntityComponentMap.containsKey(entityID)); //removing entity from EntityComponentMap
 		EntityComponentMap.get(entityID).clear();
 		EntityComponentMap.remove(entityID);
+		Player1.remove((Integer)entityID);
+		Entities.remove((Integer)entityID);
+		Player2.remove((Integer)entityID);
+		System.out.println(EntityComponentMap.keySet());
 	}
 	
-	public <T extends Component> T getComponent(int entity, Class<T> componentType){
+	public synchronized <T extends Component> T getComponent(int entity, Class<T> componentType){
 		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
 		if(store == null)
 			throw new IllegalArgumentException("GET FAIL: there are no entities with a Component of class: "+ componentType);
@@ -58,6 +72,7 @@ public final class EntityManager {
 			throw new IllegalArgumentException("GET FAIL: " + entity + "does not possess Component of class \n missing "+ componentType);
 		return result;
 	}
+	
 	public <T extends Component> List<T> getAllComponentsOfType(Class<T> componentType){
 		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
 		if (store == null){
@@ -92,6 +107,19 @@ public final class EntityManager {
 		else {
 			Entities.add(newID);
 			EntityComponentMap.put(newID, new LinkedList<>());
+			return newID;
+		}
+	}
+	
+	public int createEntityWTeam(int team) {
+		int newID = generateNewEntityID();
+		if(newID < 1){
+			return 0;
+		}
+		else {
+			Entities.add(newID);
+			EntityComponentMap.put(newID, new LinkedList<>());
+			if(team == 1) Player1.add(newID); else Player2.add(newID);
 			return newID;
 		}
 	}

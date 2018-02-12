@@ -21,7 +21,7 @@ public class InputSystem implements SubSystem{
 		this.game = g;
 	}
 	
-	public void Update(double deltaTime) {
+	public void Update(double deltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(Input.class);
 		for (Integer entity : l ) {
 			switch(game.entityManager.getComponent(entity, Input.class).getInputType()){

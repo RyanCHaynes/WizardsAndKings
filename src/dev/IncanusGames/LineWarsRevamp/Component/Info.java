@@ -4,12 +4,14 @@ import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
 
 public class Info implements Component{
 
-	Factions faction;
-	int unitType;
+	private Factions faction;
+	private int unitType;
+	private int playerOwner;
 	
-	public Info(Factions f, int unitType) {
+	public Info(Factions f, int unitType, int playerOwner) {
 		this.faction = f;
 		this.unitType = unitType;
+		this.playerOwner = playerOwner;
 	}
 	
 	public Factions getFaction() {
@@ -27,4 +29,13 @@ public class Info implements Component{
 	public void setUnitType(int unitType) {
 		this.unitType = unitType;
 	}
+	
+	public int getPlayerOwner() {
+		return playerOwner;
+	}
+
+	public void setPlayerOwner(int playerOwner) {
+		this.playerOwner = playerOwner;
+	}
+
 }

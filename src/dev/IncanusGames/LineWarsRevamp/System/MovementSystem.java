@@ -22,7 +22,7 @@ public class MovementSystem implements SubSystem{
 		this.game = g;
 	}
 	
-	public void Update(double deltaTime) {
+	public void Update(double deltaTimeUpdate) {
 		float vectorMag, Xnorm, Ynorm;
 		l = game.entityManager.getAllEntititiesWithComponentType(Movement.class);
 		for (Integer entity : l ) {

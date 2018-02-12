@@ -3,16 +3,16 @@ package dev.IncanusGames.LineWarsRevamp.AssetManager;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.EnumTypes.Factions;
 
 public class UnitStatSheet {
-
 	private int HP, ARMOR, ATTACK_DAMAGE, COST, SPECIAL_COST;
 	private Factions faction;
-	private double SPEED, RANGE, COOLDOWN;
+	private double SPEED, RANGE, COOLDOWN, ATTACK_SPEED;
 	private String classType;
 	private int HalfHitboxX;
 	
-	public void setData(int HP, int ARMOR, double SPEED, int hhx, double RANGE, int ATTACK_DAMAGE, Factions faction, String classType) {
+	public void setData(int HP, int ARMOR, double SPEED, int hhx, double RANGE, int ATTACK_DAMAGE, double ATTACK_SPEED, Factions faction, String classType) {
 		this.HP = HP;
 		this.ARMOR = ARMOR;
+		this.ATTACK_SPEED = ATTACK_SPEED;
 		this.SPEED = SPEED;
 		this.RANGE = RANGE;
 		this.ATTACK_DAMAGE = ATTACK_DAMAGE;
@@ -71,5 +71,11 @@ public class UnitStatSheet {
 		HalfHitboxX = halfHitboxX;
 	}
 
+	public double getATTACK_SPEED() {
+		return ATTACK_SPEED;
+	}
+	public void setATTACK_SPEED(double ATTACK_SPEED) {
+		this.ATTACK_SPEED = ATTACK_SPEED;
+	}
 	
 }
