@@ -20,6 +20,11 @@ public class AnimationSystem implements SubSystem{
 	public void Update(double deltaTimeUpdate) {
 		l = game.entityManager.getAllEntititiesWithComponentType(Animation.class);
 		for (Integer entity : l ) {
+			if(game.entityManager.getComponent(entity, Animation.class).isAnimationSwitched()) {
+				game.entityManager.getComponent(entity, Animation.class).setAnimationSwitched(false);
+				game.entityManager.getComponent(entity, Animation.class).setAnimationFrame(0);
+				game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(0);
+			}
 			game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(game.entityManager.getComponent(entity, Animation.class).getAnimationTimer()+1);
 			if(game.ADH.AnimationData.get(game.entityManager.getComponent(entity,  ClassType.class).getClassType()).get(game.entityManager.getComponent(entity,  ObjectState.class).getState()).getMaxFrame() == 1) {game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(0);} //do nothing
 			else if(game.entityManager.getComponent(entity, Animation.class).getAnimationTimer() >= 

@@ -34,6 +34,8 @@ public class AnimationDataManager {
 		AnimationData.get("footKnight").get(ObjectStates.UNIT_IDLE).setData(4, 128/4, 23, 20, "footKnight_Stand", true, 0);
 		AnimationData.get("footKnight").put(ObjectStates.UNIT_ATTACK, new AnimationDataSheet());
 		AnimationData.get("footKnight").get(ObjectStates.UNIT_ATTACK).setData(13, 468/13, 33, 10, "footKnight_Attack", true, 0);
+		AnimationData.get("footKnight").put(ObjectStates.UNIT_DEATH, new AnimationDataSheet());
+		AnimationData.get("footKnight").get(ObjectStates.UNIT_DEATH).setData(1, 32, 32, 10, "footKnight_DEATH", true, 0);
 		//Good Buildings<Class Init>
 		
 		//Good Buildings<Data Init>

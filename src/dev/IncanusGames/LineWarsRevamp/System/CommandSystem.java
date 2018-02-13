@@ -62,7 +62,7 @@ public class CommandSystem implements SubSystem{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_ATTACK);
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
 							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(true);
-							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
 							System.out.println("Command attack to idle");
 						}
 							break;
@@ -70,7 +70,7 @@ public class CommandSystem implements SubSystem{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_ATTACK);
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
 							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(true);
-							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
 							System.out.println("Command attack to Moving");
 						}
 						case UNIT_DEFEND:{ 
@@ -111,8 +111,37 @@ public class CommandSystem implements SubSystem{
 						}
 						break;
 					case DEATH:
-						game.getEntityManager().removeEntity(entity);
-						deleted=true;
+						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
+						case UNIT_IDLE:{
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(false);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
+						}
+							break;
+						case UNIT_MOVE:{
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(false);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
+						}
+						case UNIT_DEFEND:{ 
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
+						} 
+							break;
+							
+						case UNIT_ATTACK:{ 
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
+						}
+							break;
+						case UNIT_DEATH:{ 
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
+						}
+							break;
+						default:
+							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							break;
+						}
 						break;
 					case DISPLAY:
 						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
@@ -120,14 +149,14 @@ public class CommandSystem implements SubSystem{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_MOVE);
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(true);
 							game.getEntityManager().getComponent(entity, rangeSensor.class).setSensing(true);
-							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
 						}
 							break;
 						case UNIT_MOVE:{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_IDLE);
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
 							game.getEntityManager().getComponent(entity, rangeSensor.class).setSensing(true);
-							game.getEntityManager().getComponent(entity, Animation.class).setAnimationFrame(0);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
 						}
 						case UNIT_DEFEND:{ 
 						} 

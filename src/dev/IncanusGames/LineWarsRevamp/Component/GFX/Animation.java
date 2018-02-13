@@ -6,11 +6,13 @@ import dev.IncanusGames.LineWarsRevamp.Component.Component;
 public class Animation implements Component{
 	private int animationFrame;
 	private float animationTimer;
+	private boolean animationSwitched;
 	
 	
 	public Animation(){
 		animationFrame=0;
 		animationTimer=0;
+		animationSwitched = false;
 	}
 	public float getAnimationTimer() {
 		return animationTimer;
@@ -26,5 +28,11 @@ public class Animation implements Component{
 
 	public void setAnimationFrame(int animationFrame) {
 		this.animationFrame = animationFrame;
+	}
+	public boolean isAnimationSwitched() {
+		return animationSwitched;
+	}
+	public void setAnimationSwitched(boolean animationSwitched) {
+		this.animationSwitched = animationSwitched;
 	}
 }

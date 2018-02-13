@@ -68,7 +68,6 @@ public class GameState extends State{
 		ColideSys.Update(deltaTimeUpdate);
 	//	Psys.Update(deltaTimeUpdate);
 		SenSys.Update(deltaTimeUpdate);
-		Asys.Update(deltaTimeUpdate);
 		CmdSys.Update(deltaTimeUpdate);
 		UBSys.Update(deltaTimeUpdate);
 		AtckSys.Update(deltaTimeUpdate);
@@ -77,6 +76,8 @@ public class GameState extends State{
 
 	@Override
 	public void render(Graphics g, double deltaTimeUpdate) {
+
+		Asys.Update(deltaTimeUpdate);
 		R.Update(g, deltaTimeUpdate);
 		g.drawString(String.valueOf(Gold), 50, 150);
 	}

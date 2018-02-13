@@ -34,6 +34,7 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(64/4,24,"footKnight_Move",4,1));
 		SpriteSheets.add(new SpriteSheet(128/4,23,"footKnight_Stand",4,1));
 		SpriteSheets.add(new SpriteSheet(468/13,33,"footKnight_Attack",13,1));
+		SpriteSheets.add(new SpriteSheet(32,32,"footKnight_DEATH",1,1));
 		
 		SpriteSheets.add(new SpriteSheet(390/5,94,"GoodCastle_MaxLife",5,3));
 		

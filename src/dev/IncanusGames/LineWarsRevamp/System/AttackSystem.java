@@ -27,8 +27,7 @@ public class AttackSystem implements SubSystem{
 			if(game.entityManager.getComponent(entity, Attack.class).isAttacking()) {
 				game.entityManager.getComponent(entity, Attack.class).setFramesInAttackAnimation(game.entityManager.getComponent(entity, Attack.class).getFramesInAttackAnimation() + 1);
 				
-				if(game.entityManager.getComponent(entity, Attack.class).getFramesInAttackAnimation() > UnitStatsManager.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getATTACK_SPEED()*60 
-						&& game.entityManager.hasComponentType((int)game.entityManager.getComponent(entity, rangeSensor.class).getTarget(), Health.class))
+				if(game.entityManager.getComponent(entity, Attack.class).getFramesInAttackAnimation() > UnitStatsManager.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getATTACK_SPEED()*60)
 						{
 					if(game.entityManager.getComponent(game.entityManager.getComponent(entity, rangeSensor.class).getTarget(), Health.class).getHP() <= 0) {
 						game.entityManager.getComponent(entity, Attack.class).setAttacking(false);
@@ -40,8 +39,7 @@ public class AttackSystem implements SubSystem{
 							(game.entityManager.getComponent(game.entityManager.getComponent(entity, rangeSensor.class).getTarget(), Health.class).getHP()
 							- UnitStatsManager.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getATTACK_DAMAGE()));
 					}
-							System.out.println(entity + "Attacked" + game.entityManager.getComponent(entity, rangeSensor.class).getTarget());
-							game.entityManager.getComponent(entity, Attack.class).setFramesInAttackAnimation(0);
+							//System.out.println(entity + "Attacked" + game.entityManager.getComponent(entity, rangeSensor.class).getTarget()); who's it's target
 				}
 			}
 		}
