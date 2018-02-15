@@ -32,6 +32,7 @@ public class CommandSystem implements SubSystem{
 				
 				
 				case UNIT:{ //UNIT_ATTACK, UNIT_DEFEND, UNIT_IDLE, UNIT_DEATH, UNIT_MOVE
+					System.out.println(entity + "commanded in state" + game.getEntityManager().getComponent(entity, ObjectState.class).getState() + "Command: " + c);
 					switch(c){
 					case ACTIVATE:{
 						switch(game.getEntityManager().getComponent(entity, ObjectState.class).getState()) {
@@ -51,7 +52,7 @@ public class CommandSystem implements SubSystem{
 						}
 							break;
 						default:
-							System.out.println("Invalid command for UNIT entity" + entity + "command Type" + c.toString());
+							
 							break;
 						}
 					}
@@ -63,7 +64,6 @@ public class CommandSystem implements SubSystem{
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
 							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(true);
 							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
-							System.out.println("Command attack to idle");
 						}
 							break;
 						case UNIT_MOVE:{
@@ -71,13 +71,13 @@ public class CommandSystem implements SubSystem{
 							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
 							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(true);
 							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
-							System.out.println("Command attack to Moving");
 						}
 						case UNIT_DEFEND:{ 
 						} 
 							break;
 							
 						case UNIT_ATTACK:{ 
+							
 						}
 							break;
 						case UNIT_DEATH:{ 
@@ -129,9 +129,11 @@ public class CommandSystem implements SubSystem{
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
 						} 
 							break;
-							
 						case UNIT_ATTACK:{ 
 							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_DEATH);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, Attack.class).setAttacking(false);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
 						}
 							break;
 						case UNIT_DEATH:{ 
@@ -207,6 +209,10 @@ public class CommandSystem implements SubSystem{
 							break;
 							
 						case UNIT_ATTACK:{ 
+							game.getEntityManager().getComponent(entity, ObjectState.class).setState(ObjectStates.UNIT_IDLE);
+							game.getEntityManager().getComponent(entity, Movement.class).setMoving(false);
+							game.getEntityManager().getComponent(entity, rangeSensor.class).setSensing(true);
+							game.getEntityManager().getComponent(entity, Animation.class).setAnimationSwitched(true);
 						}
 							break;
 						case UNIT_DEATH:{ 

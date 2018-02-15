@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.AssetManager.AnimationDataManager;
 import dev.IncanusGames.LineWarsRevamp.AssetManager.SpriteSheetManager;
 import dev.IncanusGames.LineWarsRevamp.Component.ClassType;
 import dev.IncanusGames.LineWarsRevamp.Component.Movement;
@@ -31,13 +32,13 @@ public class RenderSystem implements SubSystem{
 		for(Integer entity : l) {
 			if(game.entityManager.hasComponentType(entity, Movement.class)) {
 				if(game.entityManager.getComponent(entity, Movement.class).getFacing() == 1) {
-					g.drawImage(SpriteSheetManager.AnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+					g.drawImage(SpriteSheetManager.AnimationMap.get(AnimationDataManager.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
 							.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
 							(int)game.entityManager.getComponent(entity, Position.class).getX(), 
 							(int)game.entityManager.getComponent(entity, Position.class).getY(),
 							null);
 				} else if (game.entityManager.getComponent(entity, Movement.class).getFacing() == -1) {
-					g.drawImage(SpriteSheetManager.AntiAnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+					g.drawImage(SpriteSheetManager.AntiAnimationMap.get(AnimationDataManager.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
 							.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
 							(int)game.entityManager.getComponent(entity, Position.class).getX(), 
 							(int)game.entityManager.getComponent(entity, Position.class).getY(),
@@ -46,7 +47,7 @@ public class RenderSystem implements SubSystem{
 			
 			}
 			else {
-				g.drawImage(SpriteSheetManager.AnimationMap.get(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
+				g.drawImage(SpriteSheetManager.AnimationMap.get(AnimationDataManager.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType())
 						.get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getAnimationName()).get(game.entityManager.getComponent(entity, Animation.class).getAnimationFrame()),
 						(int)game.entityManager.getComponent(entity, Position.class).getX(), 
 						(int)game.entityManager.getComponent(entity, Position.class).getY(),

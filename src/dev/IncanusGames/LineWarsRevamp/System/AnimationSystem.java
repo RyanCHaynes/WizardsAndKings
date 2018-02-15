@@ -3,6 +3,7 @@ package dev.IncanusGames.LineWarsRevamp.System;
 import java.util.List;
 
 import dev.IncanusGames.LineWarsRevamp.Game;
+import dev.IncanusGames.LineWarsRevamp.Component.Attack;
 import dev.IncanusGames.LineWarsRevamp.Component.ClassType;
 import dev.IncanusGames.LineWarsRevamp.Component.Component;
 import dev.IncanusGames.LineWarsRevamp.Component.ObjectState;
@@ -24,12 +25,16 @@ public class AnimationSystem implements SubSystem{
 				game.entityManager.getComponent(entity, Animation.class).setAnimationSwitched(false);
 				game.entityManager.getComponent(entity, Animation.class).setAnimationFrame(0);
 				game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(0);
+				System.out.println("entity: " + entity + " animation switched");
 			}
+			
+			
 			game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(game.entityManager.getComponent(entity, Animation.class).getAnimationTimer()+1);
 			if(game.ADH.AnimationData.get(game.entityManager.getComponent(entity,  ClassType.class).getClassType()).get(game.entityManager.getComponent(entity,  ObjectState.class).getState()).getMaxFrame() == 1) {game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(0);} //do nothing
 			else if(game.entityManager.getComponent(entity, Animation.class).getAnimationTimer() >= 
 			game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType()).get(game.entityManager.getComponent(entity, ObjectState.class).getState()).getframesPerSecond() //if A timer >= framesPerAFrame
 			) {
+				System.out.println(game.entityManager.getComponent(entity, ClassType.class).getClassType() +"  "+ game.entityManager.getComponent(entity, ObjectState.class).getState());
 				game.entityManager.getComponent(entity, Animation.class).setAnimationTimer(0);
 				if(game.ADH.AnimationData.get(game.entityManager.getComponent(entity, ClassType.class).getClassType()).get(game.entityManager.getComponent(entity, ObjectState.class).getState()).isLoop()) {		//if it loops calc next frame with a mod
 					game.entityManager.getComponent(entity, Animation.class).setAnimationFrame((

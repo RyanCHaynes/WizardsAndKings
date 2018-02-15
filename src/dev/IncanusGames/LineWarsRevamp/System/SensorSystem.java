@@ -32,7 +32,7 @@ public class SensorSystem implements SubSystem{
 					for(Integer unit : game.entityManager.getAllEntitiesOnTeam(2)) {
 						if(game.entityManager.getComponent(entity, rangeSensor.class).getDirection() == FacingDirections.RIGHT) {
 							if(game.entityManager.getComponent(entity, Position.class).getX()
-							+ game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getHalfHitboxX()
+							+ game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getHalfHitboxX()*3
 							+ game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getRANGE() >
 							
 							game.entityManager.getComponent(unit, Position.class).getX() 
@@ -49,7 +49,7 @@ public class SensorSystem implements SubSystem{
 					for(Integer unit : game.entityManager.getAllEntitiesOnTeam(1)) {
 						if(game.entityManager.getComponent(entity, rangeSensor.class).getDirection() == FacingDirections.LEFT) {
 							if(game.entityManager.getComponent(entity, Position.class).getX()
-							+ game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getHalfHitboxX()
+							
 							- game.USM.StatsData.get(game.entityManager.getComponent(entity, Info.class).getFaction()).get(game.entityManager.getComponent(entity, Info.class).getUnitType()).getRANGE() <
 							
 							game.entityManager.getComponent(unit, Position.class).getX() 
