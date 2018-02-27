@@ -68,7 +68,7 @@ public class AnimationDataManager {
 		AnimationData.get("Sun").get(ObjectStates.PROP_NULL).setData(3, 41, 32, 20, "Sun_Normal", true, 0);
 		AnimationData.put("Foreground",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("Foreground").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
-		AnimationData.get("Foreground").get(ObjectStates.PROP_DAY).setData(1, 416, 234, 20, "foreground_final", true, 0);
+		AnimationData.get("Foreground").get(ObjectStates.PROP_DAY).setData(1, 425, 234, 20, "preview", true, 0);
 		AnimationData.put("LavaTop",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("LavaTop").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
 		AnimationData.get("LavaTop").get(ObjectStates.PROP_DAY).setData(3, 41, 32, 20, "LavaTop_DayTime", true, 0);

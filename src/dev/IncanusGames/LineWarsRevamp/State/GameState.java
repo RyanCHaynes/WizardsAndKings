@@ -97,12 +97,17 @@ public class GameState extends State{
 	//	game.EA.createProp(580, 456, "Lava", ObjectStates.PROP_DAY);
 	//	game.EA.createProp(600, 400, "LavaTop", ObjectStates.PROP_DAY);
 		game.EA.createProp(0, 0, "Foreground", ObjectStates.PROP_DAY);
+		game.EA.createProp(523, 0, "TimeBar", ObjectStates.PROP_NULL);
 		//game.EA.createProp(1, 4, "Sun", ObjectStates.PROP_NULL);
 		
 		//game.EA.createProp(-3, 290, "GoodCastle", ObjectStates.BUILDING_MAXLIFE);
 		//game.EA.createProp(1115, 295, "EvilCastle", ObjectStates.BUILDING_MAXLIFE);
 		
 		game.EA.createProp(30, 140, "GoldCoin", ObjectStates.PROP_NULL);
+		
+		game.EA.createProp(0, 0, "UI_Corner", ObjectStates.PROP_NULL);
+		game.EA.createProp(30, 140, "UI_", ObjectStates.PROP_NULL);
+		game.EA.createProp(30, 140, "UI_Corner", ObjectStates.PROP_NULL);
 		
 	}
 	

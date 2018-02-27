@@ -52,7 +52,7 @@ public class SpriteSheetManager {
 		
 		
 		//Foreground
-		SpriteSheets.add(new SpriteSheet(416,234,"foreground_final",1,3));
+		SpriteSheets.add(new SpriteSheet(425,234,"preview",1,3));
 		SpriteSheets.add(new SpriteSheet(159/3,32,"LavaTop_DayTime",3,4));
 		SpriteSheets.add(new SpriteSheet(51,78,"Lava_DayTime",1,4));
 		
