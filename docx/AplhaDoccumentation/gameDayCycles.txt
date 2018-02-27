@@ -1,0 +1,89 @@
+60*60 = 3600 frames in 1 min
+
+60*240 = 14400 frames in 4 min
+
+60* 100= 6000 frames in 1 min 40 seconds
+
+1 min 40 seconds day 20 seconds for sunset
+1 min 40 seconds night 20 seconds for sunrise
+
+
+spawning 2 clouds from either side moving to either other side (aprox 1200 pixels) depends on width of cloud
+would take 20 seconds if the clouds moved at 1 pixel per frame
+
+40 seconds if the clouds moved at .5 pixels per frame 
+
+
+
+Need, MovementSystem 
+
+Think about, how to do a smooth transition between sprites (look up things online for graphics ect.) 
+
+RELEASE DATE GOAL JAN 14th
+
+
+General Task list to LAUNCH GAME:
+
+
+Need- reformmated foreground slates that are 16:9
+
+1 day
+Need- Implement beta UI
+Need- Implement Unit selection
+Need- Implement Unit Commands
+Need- Layered rendering
+
+2 days
+Need- Implement Command Implementation System (for Units) //Some kind of basic AI that does pathing & basic range checking based on state of unit 
+Need- Collision System
+
+1 day
+Need- Test beta with beta sprites & units
+Start Music & sound production
+
+2-4 "code" days
+Need- Implement Prelim AI (Need graphical algo && A*) (Aciton sets and goal sets) 
+
+2 days
+Need- Building UI && building commands 
+Need- Hero UI && Hero commands 
+
+2 days
+Need- Design 3 full races w/ buildings
+
+Need- Polish foreground states for each race
+
+Need- Music for all screens / sfx for all units
+Need- Custom digital art for Pregame splash ect.
+
+2-4 weeks
+Need- General UI sprites && race sprites
+Need- Setup initial marketing ECT. Busyness stuff
+Need- Official pixelated IncanusGames logo & animation 
+Set up steam page, set up kickStarter
+
+2 days
+Need- Implement Main menu
+Need- Implement Pregame screen
+
+3 days
+Need- Design talents
+Need- Implement Talent Menu
+Need- integrate menus with in game state
+
+2 days
+Need- Final AI
+
+1 week
+Need- Implement Campaign screen
+Need- Implement Campaign missions
+
+1 week
+Polish and fix bugs
+
+2 days
+Need- Implement DLC payment method (on site & in game)
+
+Polish and fix bugs 
+
+Need- Publish game
