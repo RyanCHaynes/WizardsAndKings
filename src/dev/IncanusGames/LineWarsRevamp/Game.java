@@ -14,6 +14,7 @@ import dev.IncanusGames.LineWarsRevamp.EntityManager.EntityManager;
 import dev.IncanusGames.LineWarsRevamp.InputManagers.KeyManager;
 import dev.IncanusGames.LineWarsRevamp.InputManagers.MouseManager;
 import dev.IncanusGames.LineWarsRevamp.State.GameState;
+import dev.IncanusGames.LineWarsRevamp.State.MenuState;
 import dev.IncanusGames.LineWarsRevamp.State.State;
 
 
@@ -25,7 +26,7 @@ public class Game implements Runnable{
 		private Graphics g;
 		private String title;
 		private int width, height;
-		private State GameState;
+		private State PresentState;
 		public KeyManager keyManager;
 		public MouseManager mouseManager;
 		public EntityManager entityManager = new EntityManager();
@@ -70,12 +71,12 @@ public class Game implements Runnable{
 			AnimationDataManager.init();
 			UnitStatsManager.init();
 			display = new Display(title, width, height, this);
-			GameState = new GameState(this);
+			PresentState = new MenuState(this);
+			State.setState(PresentState);
 			display.getFrame().addKeyListener(keyManager = new KeyManager());
 			display.getCanvas().addMouseListener(mouseManager = new MouseManager());
 			display.getCanvas().addMouseMotionListener(mouseManager);
 			
-			State.setState(GameState);
 		}
 		
 		public synchronized void start(){
@@ -83,6 +84,14 @@ public class Game implements Runnable{
 			running = true;
 			thread = new Thread(this);
 			thread.start();
+		}
+		
+		public void setState(State s) {
+			PresentState= s;
+		}
+		
+		public State getState() {
+			return PresentState;
 		}
 		
 		private void stop(){

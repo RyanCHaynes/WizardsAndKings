@@ -77,6 +77,34 @@ public class AnimationDataManager {
 		AnimationData.get("Lava").put(ObjectStates.PROP_DAY, new AnimationDataSheet());
 		AnimationData.get("Lava").get(ObjectStates.PROP_DAY).setData(1, 51, 78, 20, "Lava_DayTime", true, 0);
 		
+		
+		//MENU STATE::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		AnimationData.put("Menu_Background",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Menu_Background").put(ObjectStates.PROP_NULL, new AnimationDataSheet());
+		AnimationData.get("Menu_Background").get(ObjectStates.PROP_NULL).setData(1, 425, 234, 20, "Menu_Filler", true, 0);
+		
+		AnimationData.put("Orc_UI",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("Orc_UI").put(ObjectStates.UI_NULL, new AnimationDataSheet());
+		AnimationData.get("Orc_UI").get(ObjectStates.UI_NULL).setData(1, 32, 32, 20, "Orc_UI", true, 0);
+		AnimationData.get("Orc_UI").put(ObjectStates.UI_DISPLAY, new AnimationDataSheet());
+		AnimationData.get("Orc_UI").get(ObjectStates.UI_DISPLAY).setData(1, 32, 32, 20, "Orc_UIp", true, 0);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		// Frames Xwidth Ywidth FPS AnimationName Loop loopFrame
 		AnimationData.put("Moon",  new HashMap<ObjectStates, AnimationDataSheet>());
 		AnimationData.get("Moon").put(ObjectStates.PROP_NIGHT, new AnimationDataSheet());
@@ -150,5 +178,16 @@ public class AnimationDataManager {
 		AnimationData.get("WolfCard").get(ObjectStates.UI_PRESSED).setData(1, 41, 32, 20, "WolfCardPressed", true, 0);
 		AnimationData.get("WolfCard").put(ObjectStates.UI_DISPLAY, new AnimationDataSheet());
 		AnimationData.get("WolfCard").get(ObjectStates.UI_DISPLAY).setData(1, 41, 32, 20, "WolfCardPressed", true, 0);
+		
+		
+		AnimationData.put("UI",  new HashMap<ObjectStates, AnimationDataSheet>());
+		AnimationData.get("UI").put(ObjectStates.UI_NULL, new AnimationDataSheet());
+		AnimationData.get("UI").get(ObjectStates.UI_NULL).setData(1, 41, 32, 20, "UI_Lower", true, 0);
+		AnimationData.get("UI").put(ObjectStates.UI_PRESSED, new AnimationDataSheet());
+		AnimationData.get("UI").get(ObjectStates.UI_PRESSED).setData(1, 41, 32, 20, "UI_Top", true, 0);
+		AnimationData.get("UI").put(ObjectStates.UI_DISPLAY, new AnimationDataSheet());
+		AnimationData.get("UI").get(ObjectStates.UI_DISPLAY).setData(1, 41, 32, 20, "UI_Corner", true, 0);
+		AnimationData.get("UI").put(ObjectStates.UI_ACTIVE, new AnimationDataSheet());
+		AnimationData.get("UI").get(ObjectStates.UI_ACTIVE).setData(1, 41, 32, 20, "2", true, 0);
 	}
 }

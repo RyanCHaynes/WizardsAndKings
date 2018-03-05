@@ -25,6 +25,14 @@ public final class EntityManager {
 		EntityComponentMap = new HashMap<Integer, LinkedList<Component>>();
 	}
 	
+	public void changeState() {
+		Entities.clear();
+		Player1.clear();
+		Player2.clear();
+		EntityComponentMap.clear();
+		componentStores.clear();
+	}
+	
 	public boolean hasComponentType(int entity, Class componentType) {
 		for (Component Ca : EntityComponentMap.get(entity)) { //for every component type the entity has remove it from the ComponentStores
 			if (Ca.getClass() == componentType) return true;

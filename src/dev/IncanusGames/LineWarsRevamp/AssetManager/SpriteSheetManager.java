@@ -22,6 +22,7 @@ public class SpriteSheetManager {
 		initEvil();
 		initBackgroud_Beta();
 		initUI_Beta();
+		initMenu();
 		loadSpriteSheets();
 		loadAnimationMap();
 		loadAntiAnimationMap();
@@ -77,11 +78,18 @@ public class SpriteSheetManager {
 		
 		SpriteSheets.add(new SpriteSheet(612, 161, "sky morning", 1, 3));
 		SpriteSheets.add(new SpriteSheet(612, 161, "sky night", 1, 3));
-		SpriteSheets.add(new SpriteSheet(612, 161, "sky normal", 1, 2));
+		SpriteSheets.add(new SpriteSheet(612, 161, "sky normal", 1, 3));
 		SpriteSheets.add(new SpriteSheet(416, 164, "sky_final", 1, 3));
 		
 		SpriteSheets.add(new SpriteSheet(250/10, 16, "BirdProp", 10, 1));
 	}
+	
+	private static void initMenu() {
+		SpriteSheets.add(new SpriteSheet(425, 234, "Menu_Filler",1,3));
+		SpriteSheets.add(new SpriteSheet(32, 32, "Orc_UI",1,3));
+		SpriteSheets.add(new SpriteSheet(32, 32, "Orc_UIp",1,3));
+	}
+	
 	private static void initUI_Beta() {
 		SpriteSheets.add(new SpriteSheet(225, 30, "TimeBar", 1, 1));
 		SpriteSheets.add(new SpriteSheet(136/8, 15, "GoldCoin", 8, 1));
@@ -89,6 +97,11 @@ public class SpriteSheetManager {
 		SpriteSheets.add(new SpriteSheet(32, 32, "FillerUI_Unpressed",1,1));
 		SpriteSheets.add(new SpriteSheet(32, 32, "WolfCardPressed",1,1));
 		SpriteSheets.add(new SpriteSheet(32, 32, "WolfCardUnpressed",1,1));
+		
+		SpriteSheets.add(new SpriteSheet(425, 234, "UI_Lower",1,3));
+		SpriteSheets.add(new SpriteSheet(425, 234, "UI_Corner",1,3));
+		SpriteSheets.add(new SpriteSheet(425, 234, "UI_Top",1,3));
+		SpriteSheets.add(new SpriteSheet(75, 75, "2",1,1));
 	}
 	
 	

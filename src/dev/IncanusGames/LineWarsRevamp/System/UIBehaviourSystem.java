@@ -44,6 +44,16 @@ public class UIBehaviourSystem implements SubSystem{
 				case SPAWN_3:
 					break;
 				case USE_0:
+					System.out.println(game.getState().getClass().getName());
+					switch(game.getState().getClass().getName()) {
+					case"dev.IncanusGames.LineWarsRevamp.State.MenuState": System.out.println("weeee");
+					game.entityManager.getComponent(entity, UIBehaviour.class).setTriggered(false);
+					game.entityManager.changeState();
+					game.setState(new GameState(game)); 
+					break;
+					default: 
+					break;
+					}
 					break;
 				case USE_1:
 					break;
